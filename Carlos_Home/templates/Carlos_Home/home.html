@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Home {% endblock %}
+{% block navigation %}
+{% if user.is_authenticated %}
+<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
+<li><a href="#" ><span>Admin Panel</span></a></li>
+<li><a href="#" ><span>Registros</span></a></li>
+<li><a href="#" ><span>Contacto</span></a></li>
+<li><a href="#" ><span>LogOut</span></a></li>
+{% else %}
+<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
+<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
+<li><a href="#" data-nav-section="contacto" ><span>Contacto</span></a></li>
+<li><a href="#" ><span>LogIn/SignUp</span></a></li>
+{% endif %}
+{% endblock %}
+{% block carrousel %}
+<div id="slider" data-section="home">
+  <div class="owl-carousel owl-carousel-fullwidth">
+    <!-- You may change the background color here. -->
+    <div class="item" style="background-image:url('{% static 'images/kids_bg.jpg' %}')">
+      <div class="overlay"></div>
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Bienvenido a Carlitos Quientero A.C</h1>
+              <h3 class="fh5co-sub-lead to-animate">Organizacion no lucrativa ubicada en Tijuana</h3>
+              <h3 class="fh5co-sub-lead to-animate">Necesitas apoyo?</h3>
+              <p class="to-animate-2"><a href="#" target="_blank" class="btn btn-primary btn-lg">Contactanos!</a></p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" style="background: #bd2222;">
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-7 col-sm-7">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Case Study Title</h1>
+              <h2 class="fh5co-sub-lead to-animate">100% Free Fully Responsive HTML5 Bootstrap Template. Crafted with love by the fine folks at <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a></h3>
+              <p class="to-animate-2"><a href="#" class="btn btn-primary btn-lg">View Case Study</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
+            <div class="iphone to-animate-2"><img src="{% static 'images/iphone-2.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- You may change the background color here.  -->
+    <div class="item" style="background: #38569f;">
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-7 col-md-push-1 col-md-push-5 col-sm-7 col-sm-push-1 col-sm-push-5">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Case Study Title</h1>
+              <h2 class="fh5co-sub-lead to-animate">100% Free Fully Responsive HTML5 Bootstrap Template. Crafted with love by the fine folks at <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a></h3>
+              <p class="to-animate-2"><a href="#" class="btn btn-primary btn-lg">View Case Study</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-pull-7 col-sm-4 col-sm-pull-7 iphone-image">
+            <div class="iphone to-animate-2"><img src="{% static 'images/iphone-1.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+<div id="fh5co-about-us" data-section="about">
+  <div class="container">
+    <div class="row row-bottom-padded-lg" id="about-us">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="to-animate">Acerca de Nosotros</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 to-animate">
+            <h3>Asociación civil en Tijuana, dedicada a atender el Trastorno por déficit de atención con hiperactividad.</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 to-animate">
+        <img src="{% static 'images/kids.jpg' %}" class="img-responsive img-rounded" alt="Free HTML5 Template">
+      </div>
+      <div class="col-md-4 to-animate">
+        <h2>Un poco sobre quienes somos</h2>
+        <p>
+          Compartir la esperanza de un mundo con justicia y equidad para las personas con necesidades diferentes y orientar a Padres de niños con TDAH y a la Sociedad en general sobre las necesidades y los derechos de los niños que presentan el trastorno, para que estos sean aceptados y respetados en el ámbito familiar, social y escolar. </p>
+
+        <p><a href="{% url 'about_view' %}" class="btn btn-primary">Conoce mas! </a></p>
+      </div>
+    </div>
+
+<div id="fh5co-press" data-section="press">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="single-animate animate-press-1">Articulos de Interes</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
+            <h3>Una lista de articulos que pueden interesarte creado por el equipo de Carlitos Quintero</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Press Item -->
+        <div class="fh5co-press-item to-animate">
+          <div class="fh5co-press-img" style="background-image: url('{% static 'images/img_7.jpg' %}')">
+          </div>
+          <div class="fh5co-press-text">
+            <h3 class="h2 fh5co-press-title">Simplicity <span class="fh5co-border"></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+          </div>
+        </div>
+        <!-- Press Item -->
+      </div>
+
+      <div class="col-md-6">
+        <!-- Press Item -->
+        <div class="fh5co-press-item to-animate">
+          <div class="fh5co-press-img" style="background-image: url('{% static 'images/img_8.jpg' %}')">
+          </div>
+          <div class="fh5co-press-text">
+            <h3 class="h2 fh5co-press-title">Versatile <span class="fh5co-border"></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+          </div>
+        </div>
+        <!-- Press Item -->
+      </div>
+
+      <div class="col-md-6">
+        <!-- Press Item -->
+        <div class="fh5co-press-item to-animate">
+          <div class="fh5co-press-img" style="background-image: url('{% static 'images/img_9.jpg' %}');">
+          </div>
+          <div class="fh5co-press-text">
+            <h3 class="h2 fh5co-press-title">Aesthetic <span class="fh5co-border"></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+          </div>
+        </div>
+        <!-- Press Item -->
+      </div>
+
+      <div class="col-md-6">
+        <!-- Press Item -->
+        <div class="fh5co-press-item to-animate">
+          <div class="fh5co-press-img" style="background-image: url('{% static 'images/img_10.jpg' %}');">
+          </div>
+          <div class="fh5co-press-text">
+            <h3 class="h2 fh5co-press-title">Creative <span class="fh5co-border"></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+          </div>
+        </div>
+        <!-- Press Item -->
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="fh5co-contact" data-section="contacto">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="text-center">
+        <div class="google-maps">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1682.445442371419!2d-116.9865693810516!3d32.50234542049274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1459306630229" width="1140" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
