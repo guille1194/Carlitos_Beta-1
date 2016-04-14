@@ -12,13 +12,6 @@ class Cursos(models.Model):
     def __unicode__(self):
         return 'Curso %d: %s'%(self.numero_curso,self.curso)
 
-class Usuario(models.Model):
-    user_perfil = models.OneToOneField(User)
-    mail = models.EmailField()
-    phone = models.IntegerField()
-
-    def __unicode__(self):
-        return 'User %s:'%(self.user_perfil)
 
 class Profesionista(models.Model):
     perfil_usuario = models.OneToOneField(User)
