@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Reporte {% endblock %}
+{% block inicio %}
+<li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
+{% block content %}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Reporte Profesionista</h1>
+  </div>
+</aside>
+
+<!--{% if user.is_authenticated %}
+{% if user.is_superuser %}
+Binevenido {{ user.username }}<br> -->
+		<table class="table table-stripped">
+		<th>Perfil Usuario</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Reportes</th>
+		<th>Horario</th>
+		<th>Telefono</th>
+		<th>Curso</th>
+		<th>Correo electronico</th>
+	{% for item in object_list %}
+	<tr>
+	<td>{{item.perfil_usuario}}</td>
+	<td>{{item.nombre_profesionista}}</td>
+	<td>{{item.apellido_profesionista}}</td>
+	<td>{{item.reportes}}</td>
+	<td>{{item.horario}}</td>
+	<td>{{item.telefono}}</td>
+	<td>{{item.curso}}</td>
+	<td>{{item.email}}</td>
+	</tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+	{% endif %}
+{% endblock %}
