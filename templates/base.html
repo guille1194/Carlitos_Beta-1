@@ -11,7 +11,7 @@
 	<title>Carlitos - {% block title %}{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
-	<meta name="keywords" content="Carlitos Quientero, TDAH, Tijuana, Defecif de Atencion, Asociacion Civil" />
+	<meta name="keywords" content="Carlitos Quintero, TDAH, Tijuana, Defecif de Atencion, Asociacion Civil" />
 	<meta name="author" content="FREEHTML5.CO" />
 
   <!--
@@ -93,12 +93,12 @@
 		        <div class="navbar-header">
 		        	<!-- Mobile Toggle Menu Button -->
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-		          	<a class="navbar-brand" href="{% url 'home' %}">TDAH Carlitos Quientero AC</a>
+		          	<a class="navbar-brand" href="{% url 'home' %}">TDAH Carlitos Quintero AC</a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
+								{% block inicio %}{% endblock %}
 								{% if user.is_authenticated %}
-								<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
 								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
 								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
 								<li><a href="#" ><span>Contacto</span></a></li>
@@ -106,7 +106,6 @@
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
 								<li><a href="#" ><span>LogOut</span></a></li>
 								{% else %}
-								<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
 								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
 								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
 								<li><a href="#" data-nav-section="contacto" ><span>Cursos</span></a></li>

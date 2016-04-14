@@ -43,11 +43,7 @@ class Paciente(models.Model):
     edad_ingreso = models.IntegerField()
     telefono = models.IntegerField()
     email = models.EmailField()
-    ELECCION_GENERO = (
-                    ('M', 'Masculino'),
-                    ('F', 'Femenino'),
-                    )
-    genero = models.CharField(max_length=1, choices=ELECCION_GENERO)
+    genero = models.CharField(max_length=1)
 
 
     def __str__(self):

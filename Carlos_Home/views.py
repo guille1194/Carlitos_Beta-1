@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, FormView, CreateView, ListView, UpdateView, DetailView
-from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm
+from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm
 from django.core.urlresolvers import reverse_lazy
-from .models import Cursos, Profesionista
+from .models import Cursos, Profesionista, Paciente
 
 # Create your views here.
 
@@ -52,7 +52,34 @@ class ProfesionitaView(FormView):
         p.telefono = form.cleaned_data['telefono']
         p.curso = form.cleaned_data['curso']
         p.email = form.cleaned_data['email']
+        p.save()
         return super(ProfesionitaView,self).form_valid(form)
 
 def admin(request):
     return render(request, 'Carlos_Home/Admin.html')
+
+class PacienteView(FormView):
+    template_name = 'Carlos_Home/Registro_paciente.html'
+    form_class = PacienteForm
+    success_url = reverse_lazy('registros_view')
+
+    def form_valid(self,form):
+        user = form.save()
+        p = Paciente()
+        p.perfil_usuario = user
+        p.nombre_paciente = user.first_name
+        p.apellido_paciente = user.last_name
+        p.num_expediente = form.cleaned_data['num_expediente']
+        p.area = form.cleaned_data['area']
+        p.fecha_ingreso = form.cleaned_data['fecha_ingreso']
+        p.fecha_conclusion = form.cleaned_data['fecha_conclusion']
+        p.evaluacion_completa = form.cleaned_data['evaluacion_completa']
+        p.reportes = form.cleaned_data['reportes']
+        p.diagnostico = form.cleaned_data['diagnostico']
+        p.fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
+        p.edad_ingreso = form.cleaned_data['edad_ingreso']
+        p.telefono = form.cleaned_data['telefono']
+        p.email = form.cleaned_data['email']
+        p.genero = form.cleaned_data['genero']
+        p.save()
+        return super(PacienteView,self).form_valid(form)

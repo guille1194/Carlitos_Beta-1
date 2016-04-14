@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Home {% endblock %}
+{% block inicio %}
+<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
 {% block carrousel %}
 <div id="slider" data-section="home">
   <div class="owl-carousel owl-carousel-fullwidth">
