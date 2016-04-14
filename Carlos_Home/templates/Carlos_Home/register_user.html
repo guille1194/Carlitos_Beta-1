@@ -10,11 +10,11 @@
 <li><a href="#" ><span>Contacto</span></a></li>
 <li><a href="#" ><span>LogOut</span></a></li>
 {% else %}
-<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
-<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
-<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
-<li><a href="#" data-nav-section="contacto" ><span>Contacto</span></a></li>
-<li><a href="#" ><span>LogIn/SignUp</span></a></li>
+<li class="active"><a href="#" data-nav-section="home" style="color: blue"><span>Inicio</span></a></li>
+<li><a href="localhost:8000/about/" data-nav-section="about" style="color: blue"><span>Acerca</span></a></li>
+<li><a href="#" data-nav-section="press" style="color: blue"><span>Blog</span></a></li>
+<li><a href="localhost:8000/contacto/" data-nav-section="contacto" style="color: blue"><span>Contacto</span></a></li>
+<li><a href="#" style="color: blue"><span>LogIn/SignUp</span></a></li>
 {% endif %}
 {% endblock %}
 {% block carrousel %}
@@ -26,10 +26,10 @@
   {{ form.errors }}
   {% endif %}
 
-  <div class="container text-center" style="padding-top: 150px; background-color: #CACACA ">
     <div class="row">
-      <form method="POST"role="form">
+        <form method="POST"role="form">
           {% csrf_token %}
+          <div class="container text-center" style="padding-top: 150px; color: #CACACA ">
           <div class="col-sm-8 col-sm-offset-2">
             <div class="form-group float-label-control">
                 <label for="id_username">Username</label>
@@ -67,7 +67,5 @@
       </form>
     </div>
   </div>
-
-  {{form.as_p}}
 
 {% endblock %}
