@@ -1,22 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Home {% endblock %}
-{% block navigation %}
-{% if user.is_authenticated %}
-<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
-<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
-<li><a href="#" ><span>Admin Panel</span></a></li>
-<li><a href="#" ><span>Registros</span></a></li>
-<li><a href="#" ><span>Contacto</span></a></li>
-<li><a href="#" ><span>LogOut</span></a></li>
-{% else %}
-<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
-<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
-<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
-<li><a href="#" data-nav-section="contacto" ><span>Contacto</span></a></li>
-<li><a href="#" ><span>LogIn/SignUp</span></a></li>
-{% endif %}
-{% endblock %}
 {% block carrousel %}
 <div id="slider" data-section="home">
   <div class="owl-carousel owl-carousel-fullwidth">

@@ -12,7 +12,6 @@ class Cursos(models.Model):
     def __unicode__(self):
         return 'Curso %d: %s'%(self.numero_curso,self.curso)
 
-
 class Profesionista(models.Model):
     perfil_usuario = models.OneToOneField(User)
     nombre_profesionista = models.CharField(max_length = 68)
@@ -22,6 +21,9 @@ class Profesionista(models.Model):
     telefono = models.IntegerField()
     curso = models.ForeignKey(Cursos)
     email = models.EmailField()
+
+    def __unicode__(self):
+        return(self.curso)
 
     def __str__(self):
         return 'nombre: %s - curso: %s' %(self.nombre_profesionista, self.curso)

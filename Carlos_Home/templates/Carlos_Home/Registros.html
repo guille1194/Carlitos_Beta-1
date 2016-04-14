@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %} Registros {% endblock %}
+{% block content %}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Alta de Registros</h1>
+  </div>
+</aside>
+<div class="container">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>Opciones</h2>
+                <hr class="small">
+                <div  class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #0000ff" class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i style = "color: #fff" class="fa fa-users fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Registrar Profesionista</strong>
+                            </h4>
+                            <p>For new users </p>
+                            <a href="{% url 'ProfesionitaView_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #00e600" class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i style = "color: #fff" class="fa fa-user-plus fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Registrar Paciente</strong>
+                            </h4>
+                            <p>Start a new order</p>
+                            <a href="#"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #e6e600" class="fa-stack fa-4x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i style = "color: #fff" class="fa fa-book fa-stack-1x text-primary"></i>
+                        </span>
+                            <h4>
+                                <strong>Registrar Curso</strong>
+                            </h4>
+                            <p>Quality Options for Supervisors</p>
+                            <a href="{% url 'CursoView_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #ff0000" class="fa-stack fa-4x">
+                            <i  class="fa fa-circle fa-stack-2x"></i>
+                            <i style = "color: #fff" class="fa fa-file-text fa-stack-1x text-primary"></i>
+                        </span>
+                            <h4>
+                                <strong>Otro Registro</strong>
+                            </h4>
+                            <p>Report Seccction for the Bauss</p>
+                            <a href="#"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+  </div>
+    <!-- /.container -->
+{% endblock %}
