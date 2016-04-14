@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %} Reportes {% endblock %}
+{% block inicio %}
+<li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
+{% block content %}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Reporte Paciente</h1>
+  </div>
+</aside>
+
+<!--{% if user.is_authenticated %}
+{% if user.is_superuser %}
+Binevenido {{ user.username }}<br> -->
+		<table class="table table-stripped">
+		<th>Perfil Usuario</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Numero Expediente</th>
+		<th>Area</th>
+		<th>Profesionista</th>
+		<th>Fecha Ingreso</th>
+		<th>Fecha Conclusion</th>
+		<th>Evaluacion Completa</th>
+		<th>Reportes</th>
+		<th>Diagnostico</th>
+		<th>Fecha Nacimiento</th>
+		<th>Edad Ingreso</th>
+		<th>Telefono</th>
+		<th>Correo Electronico</th>
+		<th>Genero</th>
+	{% for item in object_list %}
+	<tr>
+	<td>{{item.perfil_usuario}}</td>
+	<td>{{item.nombre_paciente}}</td>
+	<td>{{item.apellido_paciente}}</td>
+	<td>{{item.num_expediente}}</td>
+	<td>{{item.area}}</td>
+	<td>{{item.profesionista}}</td>
+	<td>{{item.fecha_ingreso}}</td>
+	<td>{{item.fecha_conclusion}}</td>
+	<td>{{item.evaluacion_completa}}</td>
+	<td>{{item.reportes}}</td>
+	<td>{{item.diagnostico}}</td>
+	<td>{{item.fecha_nacimiento}}</td>
+	<td>{{item.edad_ingreso}}</td>
+	<td>{{item.telefono}}</td>
+	<td>{{item.email}}</td>
+	<td>{{item.genero}}</td>
+	</tr>
+		{% endfor %}
+		</table>
+		{% endif %}
+		{% endif %}
+{% endblock %}
