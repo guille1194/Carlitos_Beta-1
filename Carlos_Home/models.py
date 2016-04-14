@@ -13,7 +13,9 @@ class Cursos(models.Model):
         return 'Curso %d: %s'%(self.numero_curso,self.curso)
 
 class Usuario(models.Model):
-    user_perfil = models.OneToOneField(User)
+    perfil_usuario = models.OneToOneField(User)
+    nombre_usuario = models.CharField(max_length = 99)
+    apellido_usuario = models.CharField(max_length = 99)
     mail = models.EmailField()
     phone = models.IntegerField()
 
