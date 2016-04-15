@@ -23,6 +23,9 @@ class ContactView(FormView):
 
 def Registros(request):
     return render(request, 'Carlos_Home/Registros.html')
+    
+def Reportes(request):
+    return render(request, 'Carlos_Home/Reportes.html')
 
 class CursoView(FormView):
     template_name = 'Carlos_Home/Registro_curso.html'
@@ -83,3 +86,18 @@ class PacienteView(FormView):
         p.genero = form.cleaned_data['genero']
         p.save()
         return super(PacienteView,self).form_valid(form)
+
+class ReportePaciente(ListView):
+	template_name = 'Carlos_Home/reporte_paciente.html'
+	model = Paciente
+	fields = '__all__'
+
+class ReporteProfesionista(ListView):
+	template_name = 'Carlos_Home/reporte_profesionista.html'
+	model = Profesionista
+	fields = '__all__'
+
+class ReporteCurso(ListView):
+	template_name = 'Carlos_Home/reporte_cursos.html'
+	model = Cursos
+	fields = '__all__'
