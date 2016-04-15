@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Reportes {% endblock %}
+{% block inicio %}
+<li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
+{% block content %}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Reporte Cursos</h1>
+  </div>
+</aside>
+
+<!--{% if user.is_authenticated %}
+
+Binevenido {{ user.username }}<br> -->
+		<table class="table table-stripped">
+		<th>Numero Curso</th>
+		<th>Curso</th>
+	{% for item in object_list %}
+	<tr>
+	<td>{{item.numero_curso}}</td>
+	<td>{{item.curso}}</td>
+	</tr>
+		{% endfor %}
+		</table>
+  	{% endif %}
+{% endblock %}
