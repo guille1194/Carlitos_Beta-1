@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'embed_video',
     'Carlos_Home',
 ]
 
@@ -52,6 +53,10 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'CarlitosWP.urls'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
 
 TEMPLATES = [
     {
@@ -128,6 +133,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+MEDIA_URL = 'http://localhost:8000/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 EMAIL_HOST = "smtp.gmail.com"
 
