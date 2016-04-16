@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, CreateView, ListView, UpdateView, DetailView
 from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm
 from django.core.urlresolvers import reverse_lazy
-from .models import Cursos, Profesionista, Paciente
+from .models import Cursos, Profesionista, Paciente, Post, Categoria
 from django.core.mail import send_mail
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -113,3 +114,41 @@ class ReporteCurso(ListView):
 	template_name = 'Carlos_Home/reporte_cursos.html'
 	model = Cursos
 	fields = '__all__'
+
+class Crear_Post(CreateView):
+	template_name = 'Carlos_Home/CrearPost.html'
+	model = Post
+	fields = '__all__'
+	success_url=reverse_lazy('index_view')
+
+class Crear_Categoria(CreateView):
+    template_name='Carlos_Home/CrearCategoria.html'
+    model = Categoria
+    fields= '__all__'
+    success_url=reverse_lazy('index_view')
+
+def post_detalle(request, id=None):
+	post = get_object_or_404(Post, id=id)
+	context = {
+		"object_list": "eee",
+		"post": post,
+	}
+	return render(request, "Carlos_Home/post_detalle.html", context)
+
+def post_lista(request):
+	queryset_list = Post.objects.all().order_by('-creado')
+	paginator = Paginator(queryset_list, 3) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		queryset = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		queryset = paginator.page(paginator.num_pages)
+	context = {
+		"object_list": queryset
+	}
+	return render(request, "Carlos_Home/post_lista.html", context)
