@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.db import models
+from django.template.defaultfilters import slugify
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 class Cursos(models.Model):
@@ -11,6 +13,22 @@ class Cursos(models.Model):
 
     def __unicode__(self):
         return 'Curso %d: %s'%(self.numero_curso,self.curso)
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100)
+    orden = models.IntegerField(default=0)
+
+class Post(models.Model):
+    titulo = models.CharField(max_length = 200)
+    contenido = models.TextField()
+    slug = models.SlugField(unique=True)
+    categorias = models.ForeignKey(Categoria)
+    post_imagen = models.ImageField(upload_to='post_imagen/')
+    creado = models.DateTimeField(default=timezone.now)
+    post_video = EmbedVideoField(verbose_name='My video', help_text='This is a help text', blank=True, null=True)
+
+    def __str__(self):
+        return self.titulo
 
 class Profesionista(models.Model):
     perfil_usuario = models.OneToOneField(User)
