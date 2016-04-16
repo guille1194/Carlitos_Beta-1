@@ -83,6 +83,27 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script type = "text/javascript">
+	function valida(f){
+		var ok = true;
+		var c = 0;
+		var msg = "Debes escribir algo en los campos\n";
+		if(f.elements[0].value==null)
+		{
+			msg += "- Numero Curso\n";
+			ok = false;
+		}else{ c+= 1}
+		if(f.elements[c].value=="")
+		{
+			msg += "- Curso"
+			ok = false;
+		}
+		if(ok == false && c < 2)
+			alert(msg);
+		else{alert('Exitoo!...')}
+		return ok;
+	}
+	</script>
 
 	</head>
 	<body>

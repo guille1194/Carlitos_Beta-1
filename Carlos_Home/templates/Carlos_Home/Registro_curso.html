@@ -10,7 +10,7 @@
   </div>
 </aside>
 <div class="row">
-  <form role = "form" method="POST">
+  <form id= "form" role = "form" method="POST" onsubmit="return valida(form)">
     {% csrf_token %}
     <div class="container text-center" style="padding-top: 15px;">
       <h2>Completa el formulario</h2>

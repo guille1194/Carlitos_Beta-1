@@ -3,6 +3,8 @@ from django.views.generic import TemplateView, FormView, CreateView, ListView, U
 from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm
 from django.core.urlresolvers import reverse_lazy
 from .models import Cursos, Profesionista, Paciente
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -15,15 +17,25 @@ def about(request):
 class ContactView(FormView):
     template_name = 'Carlos_Home/contact.html'
     form_class = ContactForm
-    success_url = ('Carlos_Home/home')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        form.send_email()
+        form_email = form.cleaned_data.get('emal')
+        form_message = form.cleaned_data.get('message')
+        form_name = form.cleaned_data.get('name')
+
+        subject = 'Test Mailbox'
+        contact_message ='%s: %s Via: %s'%(form_name,form_message,form_email)
+        from_email = settings.EMAIL_HOST_USER
+        to_email =[from_email]
+        send_mail(subject, contact_message, from_email,to_email, fail_silently=False)
         return super(ContactView, self).form_valid(form)
+
+
 
 def Registros(request):
     return render(request, 'Carlos_Home/Registros.html')
-    
+
 def Reportes(request):
     return render(request, 'Carlos_Home/Reportes.html')
 

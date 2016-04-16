@@ -6,6 +6,7 @@ from .models import Cursos
 
 class ContactForm(forms.Form):
     name = forms.CharField()
+    emal = forms.CharField();
     message = forms.CharField(widget = forms.Textarea)
 
     def send_email(self):
