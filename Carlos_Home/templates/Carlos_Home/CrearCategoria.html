@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Create Category{% endblock %}
+{% block header %}
+	<h1>Create Category</h1>
+{% endblock %}
+{% block content %}
+<h1 style="text-align: center;"> Create Category </h1>
+{% if user.is_authenticated %}
+{% if user.is_superuser %}
+Binevenido {{ user.username }}<br>
+
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="enviar">
+		</form>
+{% endif %}
+{% endif %}
+
+{% endblock %}
