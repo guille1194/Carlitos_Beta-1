@@ -25,7 +25,7 @@ class Post(models.Model):
     categorias = models.ForeignKey(Categoria)
     post_imagen = models.ImageField(upload_to='post_imagen/')
     creado = models.DateTimeField(default=timezone.now)
-    post_video = EmbedVideoField(verbose_name='My video', help_text='This is a help text', blank=True, null=True)
+    post_video = models.CharField(max_length = 300, null = True)
 
     def __str__(self):
         return self.titulo
