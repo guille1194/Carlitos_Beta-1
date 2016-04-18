@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import home, about, ContactView, Registros, Reportes, CursoView, ProfesionitaView, admin, PacienteView, ReporteProfesionista, ReportePaciente, ReporteCurso, Crear_Post, post_detalle, post_lista, Crear_Categoria
+from .views import home, about, ContactView, Registros, Reportes, CursoView, ProfesionitaView, admin, PacienteView, ReporteProfesionista, ReportePaciente, ReporteCurso, Crear_Post, post_detalle, post_lista, Crear_Categoria, BlogAdmin
 
 urlpatterns = [
     url(r'^$', home, name= "home"),
@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^post_detalle/(?P<id>\d+)/$', post_detalle, name='post_detalle'),
     url(r'^post_lista/$', post_lista, name='post_lista'),
     url(r'^Crear_Categoria/$', Crear_Categoria.as_view(), name='crear_categoria_view'),
-
+    url(r'^blogadmin/$', BlogAdmin, name= "blog_admin"),
 ]

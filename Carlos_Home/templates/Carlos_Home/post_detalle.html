@@ -1,63 +1,41 @@
 {% extends "base.html" %}
-
-{%load embed_video_tags %}
 {% block title %}{{ post.titulo | title }} Detalle{% endblock %}
-{% block page_title %}
-  <div class="container-fluid">
-    <h4 class="h4" style="text-align: center;">Detalle {{ post.post_titulo | title }}.</h4>
-  </div>
-
-  <div class="container-fluid">
-    <label><br></label>
-  </div>
-{% endblock %}
+{% block inicio %}<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
 {% block content %}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">{{ post.titulo | title }}</h1>
+  </div>
+</aside>
+<div class="row" >
+  <div class="col-xs-12">
+    <div class="thumbnail col-xs-12">
+      <img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900">
+      <h2 style="text-align: center">{{ post.titulo | title }}</h2>
+      <h3 style="text-align: center">{{ post.categorias | title }}</h3>
+      <p style="text-align: center">{{ post.contenido | capfirst }}</p>
+      <div class="text-center">
+        {% if post.post_video %}<iframe id="player" type="text/html" width="640" height="390" src="{{ post.post_video }}" frameborder="0"></iframe>{% endif %}
+      </div>
+      <div class="caption" ></div>
+      <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}</p>
+      <p><div class="fb-like" data-href="https://localhost:8000/post_detail/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  {% if user.is_authenticated %}
+    <button type="button" class="btn btn-default btnDef1 col-xs-2 col-xs-offset-4"><i class="icon-pencil"></i></button>
+    <button type="button" class="btn btn-default btnDef2 col-xs-2"><i class="icon-remove"></i></button>
+  {% endif%}
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=564744000354862";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-    {% if post.post_video %}
-        <div class="row" >
-          <div class="col-xs-12">
-            <div class="thumbnail col-xs-12">
-              <img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900">
-              <h3 style="text-align: center">{{ post.titulo | title }}</h3>
-              <h6 style="text-align: center">{{ post.categorias | title }}</h6>
-              <p style="text-align: center">{{ post.contenido | capfirst }}</p>
-              <iframe id="player" type="text/html" width="640" height="390" src="{{ post.post_video }}" frameborder="0"></iframe>
-              <div class="caption" ></div>
-              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}</p>
-              <p><div class="fb-like" data-href="https://localhost:8000/post_detail/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></p>
-
-              <!-- <p>
-                <a href=""></a> <a href="#" class="btn btn-primary" role="button">Btn</a>
-                <a href=""></a> <a href="#" class="btn btn-default" role="button">Btn</a>
-              </p> -->
-
-              <p ></p>
-            </div>
-          </div>
-        </div>
-    {% else %}
-        <div class="row" >
-          <div class="col-xs-12">
-            <div class="thumbnail col-xs-12"><br>
-              <div class="caption" ></div>
-              <img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900">
-              <h3 style="text-align: center">{{ post.titulo | title }}</h3>
-              <h6 style="text-align: center">{{ post.categorias | title }}</h6>
-              <p style="text-align: center">{{ post.contenido | capfirst }}</p>
-              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}
-              <p><div class="fb-like" data-href="https://localhost:8000/post_detalle/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></p>
-              </p>
-              <div class="caption" ></div>
-            </div>
-          </div>
-        </div>
-        <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=564744000354862";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-    {% endif %}
 {% endblock %}

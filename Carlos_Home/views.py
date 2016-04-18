@@ -137,7 +137,7 @@ def post_detalle(request, id=None):
 
 def post_lista(request):
 	queryset_list = Post.objects.all().order_by('-creado')
-	paginator = Paginator(queryset_list, 3) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 3) # Show 3 contacts per page
 
 	page = request.GET.get('page')
 	try:
@@ -152,3 +152,6 @@ def post_lista(request):
 		"object_list": queryset
 	}
 	return render(request, "Carlos_Home/post_lista.html", context)
+
+def BlogAdmin(request):
+    return render(request, "Carlos_Home/blogadmin.html")

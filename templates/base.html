@@ -122,7 +122,7 @@
 								{% if user.is_authenticated %}
 								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
 								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
-								<li><a href="#" ><span>Contacto</span></a></li>
+								<li><a href="{% url 'contacto' %}" ><span>Contacto</span></a></li>
 								<li><a href="{% url 'admin_panel' %}" ><span>Admin Panel</span></a></li>
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
 								<li><a href="#" ><span>Salir</span></a></li>

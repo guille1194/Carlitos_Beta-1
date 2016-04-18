@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Administracion Blog{% endblock%}
+{% block inicio %}<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
+{% block content%}
+<aside class="callout">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Administracion Blog</h1>
+  </div>
+</aside>
+<div class="container">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>Opciones</h2>
+                <hr class="small">
+                <div  class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #0000ff" class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i style = "color: #fff" class="fa fa-users fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Agregar Post</strong>
+                            </h4>
+                            <p>Entra aqui para agregar un post nuevo </p>
+                            <a href="{% url 'crear_post_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="service-item">
+                            <span style = "color: #00e600" class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i style = "color: #fff" class="fa fa-user-plus fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Editar Post</strong>
+                            </h4>
+                            <p>Entra aqui para editar o borrar un post</p>
+                            <a href="{% url 'post_lista' %}"  class="btn btn-primary btn-lg">Click Here!</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+  </div>
+    <!-- /.container -->
+{% endblock %}

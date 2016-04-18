@@ -19,16 +19,16 @@ class Categoria(models.Model):
     orden = models.IntegerField(default=0)
 
 class Post(models.Model):
-    titulo = models.CharField(max_length = 200)
-    contenido = models.TextField()
-    slug = models.SlugField(unique=True)
-    categorias = models.ForeignKey(Categoria)
-    post_imagen = models.ImageField(upload_to='post_imagen/')
-    creado = models.DateTimeField(default=timezone.now)
-    post_video = models.CharField(max_length = 300, null = True)
+        titulo = models.CharField(max_length = 200)
+        contenido = models.TextField()
+        slug = models.SlugField(unique=True)
+        categorias = models.ForeignKey(Categoria)
+        post_imagen = models.ImageField(upload_to='post_imagen/')
+        creado = models.DateTimeField(default=timezone.now)
+        post_video = models.CharField(max_length = 300, null = True)
 
-    def __str__(self):
-        return self.titulo
+        def __str__(self):
+            return self.titulo
 
 class Profesionista(models.Model):
     perfil_usuario = models.OneToOneField(User)
