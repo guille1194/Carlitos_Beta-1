@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Registro{% endblock %}
 {% block content %}
+<aside class="callout" style="background: url(../static/images/admin.jpg) no-repeat center center scroll;">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Registro</h1>
+  </div>
+</aside>
 	<form method="POST">
 		{% csrf_token %}
 		{{ form.as_p }}

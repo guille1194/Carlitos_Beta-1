@@ -127,10 +127,10 @@
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
 								<li><a href="{% url 'logout' %}" ><span> {{ user.username | capfirst }} / Salir</span></a></li>
 								{% else %}
-								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
+								<li><a href="{% url 'about_view' %}" data-nav-section="about"><span>Acerca</span></a></li>
 								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
-								<li><a href="#" data-nav-section="contacto" ><span>Cursos</span></a></li>
-								<li><a href="#" data-nav-section="contacto" ><span>Contacto</span></a></li>
+								<li><a href="{% url 'cursos_view' %}" ><span>Cursos</span></a></li>
+								<li><a href="{% url 'contacto' %}"><span>Contacto</span></a></li>
 								<li>
 									<a href="" style="background-color: transparent"class="dropdown-toggle" data-toggle="dropdown">Inciar Sesion <span class=""></span></a>
                         <ul style= "background: none;" class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
@@ -147,6 +147,9 @@
 													    	  </div>
 													    	  <button type="submit" class="btn btn-default btn-xs btn-block">Login</button>
 													    	  <button type="reset" class="btn btn-default btn-xs btn-block">Cancel</button>
+																	<p class="text-center" style="color: white">
+																		No tienes cuenta? <a href="{% url 'registro_view' %}">Registrate</a>
+																	</p>
                             </div>
                         </ul>
 								</li>

@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Cursos
+from .models import Cursos, Categoria
 
 class ContactForm(forms.Form):
     name = forms.CharField()
@@ -56,3 +56,12 @@ class PacienteForm(UserCreationForm):
 
 class User_form(UserCreationForm):
 	email = forms.CharField(max_length=99)
+
+class PostForm(forms.Form):
+    titulo = forms.CharField()
+    contenido = forms.CharField()
+    slug = forms.SlugField()
+    categorias = forms.ModelChoiceField(Categoria.objects.values_list('nombre'),  empty_label= "Selecciona Curso")
+    post_imagen = forms.ImageField()
+    creado = forms.DateTimeField(input_formats = ['%m/%d/%Y %H:%M:%S'])
+    post_video = forms.CharField()

@@ -4,7 +4,7 @@
 <li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
 {% endblock %}
 {% block content %}
-<aside class="callout">
+<aside class="callout" style="background: url(static/images/admin.jpg) no-repeat center center scroll;">
   <div class="text-vertical-center">
       <h1 style="color: #fff">Alta de Registros</h1>
   </div>
@@ -24,7 +24,7 @@
                             <h4>
                                 <strong>Registrar Profesionista</strong>
                             </h4>
-                            <p>For new users </p>
+                            <p>Agrega un profesionista</p>
                             <a href="{% url 'ProfesionitaView_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <h4>
                                 <strong>Registrar Paciente</strong>
                             </h4>
-                            <p>Start a new order</p>
+                            <p>Agrega un paciente nuevo</p>
                             <a href="{% url 'PacienteView_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <h4>
                                 <strong>Registrar Curso</strong>
                             </h4>
-                            <p>Quality Options for Supervisors</p>
+                            <p>Agrega Cursos Nuevos</p>
                             <a href="{% url 'CursoView_view' %}"  class="btn btn-primary btn-lg">Click Here!</a>
                         </div>
                     </div>
@@ -61,10 +61,10 @@
                             <i style = "color: #fff" class="fa fa-file-text fa-stack-1x text-primary"></i>
                         </span>
                             <h4>
-                                <strong>Otro Registro</strong>
+                                <strong>Registro Usuario</strong>
                             </h4>
-                            <p>Report Seccction for the Bauss</p>
-                            <a href="#"  class="btn btn-primary btn-lg">Click Here!</a>
+                            <p>Registrar usuarios nuevos</p>
+                            <a href="{% url 'registro_view'%}"  class="btn btn-primary btn-lg">Click Here!</a>
                         </div>
                     </div>
                 </div>

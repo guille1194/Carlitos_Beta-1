@@ -2,18 +2,20 @@
 {% block title %}{{ post.titulo | title }} Detalle{% endblock %}
 {% block inicio %}<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
 {% block content %}
-<aside class="callout">
+<aside class="callout" style="background: url({{post.post_imagen.url}}) no-repeat center center scroll; background-size: cover">
   <div class="text-vertical-center">
-      <h1 style="color: #fff">{{ post.titulo | title }}</h1>
   </div>
 </aside>
 <div class="row" >
   <div class="col-xs-12">
     <div class="thumbnail col-xs-12">
-      <img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900">
       <h2 style="text-align: center">{{ post.titulo | title }}</h2>
       <h3 style="text-align: center">{{ post.categorias | title }}</h3>
-      <p style="text-align: center">{{ post.contenido | capfirst }}</p>
+      <div class="container">
+        <div class="row">
+          <p style="text-align: center">{{ post.contenido | capfirst }}</p>
+        </div>
+      </div>
       <div class="text-center">
         {% if post.post_video %}<iframe id="player" type="text/html" width="640" height="390" src="{{ post.post_video }}" frameborder="0"></iframe>{% endif %}
       </div>

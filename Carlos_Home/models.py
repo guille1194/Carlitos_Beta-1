@@ -18,6 +18,9 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
     orden = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Post(models.Model):
         titulo = models.CharField(max_length = 200)
         contenido = models.TextField()

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, CreateView, ListView, UpdateView, DetailView
-from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm, User_form
+from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm, User_form, PostForm
 from django.core.urlresolvers import reverse_lazy
 from .models import Cursos, Profesionista, Paciente, Post, Categoria
 from django.core.mail import send_mail
@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def home(request):
+    queryset_list = Post.objects.all().order_by('-creado')
     return render(request, 'Carlos_Home/home.html')
 
 def about(request):
@@ -115,12 +116,6 @@ class ReporteCurso(ListView):
 	model = Cursos
 	fields = '__all__'
 
-class Crear_Post(CreateView):
-	template_name = 'Carlos_Home/CrearPost.html'
-	model = Post
-	fields = '__all__'
-	success_url=reverse_lazy('index_view')
-
 class Crear_Categoria(CreateView):
     template_name='Carlos_Home/CrearCategoria.html'
     model = Categoria
@@ -157,7 +152,7 @@ def BlogAdmin(request):
     return render(request, "Carlos_Home/blogadmin.html")
 
 class Registro(FormView):
-	template_name = 'home/registro.html'
+	template_name = 'Carlos_Home/registro.html'
 	form_class = User_form
 	#fields = ['user_perfil', 'mail', 'phone']
 	success_url = reverse_lazy('signup_view')
@@ -170,3 +165,23 @@ class Registro(FormView):
 		p.mail = form.cleaned_data['email']
 		p.save()
 		return super(Signup, self).form_valid(form)
+
+class Crear_Post(FormView):
+    template_name = 'Carlos_Home/CrearPost.html'
+    form_class = PostForm
+    success_url=reverse_lazy('index_view')
+
+    def form_valid(self,form):
+        p = Post()
+        p.titulo = form.cleaned_data['titulo']
+        p.contenido = form.cleaned_data['contenido']
+        p.slug = form.cleaned_data['slug']
+        p.categorias = form.cleaned_data['categorias']
+        p.post_imagen = form.cleaned_data['post_imagen']
+        p.creado = form.cleaned_data['creado']
+        p.post_video = form.cleaned_data['post_video']
+        p.save()
+        return super(Crear_Post, self).form_valid(form)
+
+def Cursos(request):
+    return render(request, "Carlos_Home/cursos.html")
