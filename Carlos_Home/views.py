@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, CreateView, ListView, UpdateView, DetailView
-from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm
+from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm, User_form
 from django.core.urlresolvers import reverse_lazy
 from .models import Cursos, Profesionista, Paciente, Post, Categoria
 from django.core.mail import send_mail
@@ -155,3 +155,18 @@ def post_lista(request):
 
 def BlogAdmin(request):
     return render(request, "Carlos_Home/blogadmin.html")
+
+class Registro(FormView):
+	template_name = 'home/registro.html'
+	form_class = User_form
+	#fields = ['user_perfil', 'mail', 'phone']
+	success_url = reverse_lazy('signup_view')
+
+
+	def form_valid(self, form):
+		user = form.save()
+		p = Perfil()
+		p.perfil_usuario = user
+		p.mail = form.cleaned_data['email']
+		p.save()
+		return super(Signup, self).form_valid(form)
