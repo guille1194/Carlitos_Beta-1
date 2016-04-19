@@ -53,3 +53,6 @@ class PacienteForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name')
+
+class User_form(UserCreationForm):
+	email = forms.CharField(max_length=99)
