@@ -125,13 +125,31 @@
 								<li><a href="{% url 'contacto' %}" ><span>Contacto</span></a></li>
 								<li><a href="{% url 'admin_panel' %}" ><span>Admin Panel</span></a></li>
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
-								<li><a href="#" ><span>Salir</span></a></li>
+								<li><a href="{% url 'logout' %}" ><span> {{ user.username | capfirst }} / Salir</span></a></li>
 								{% else %}
 								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
 								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
 								<li><a href="#" data-nav-section="contacto" ><span>Cursos</span></a></li>
 								<li><a href="#" data-nav-section="contacto" ><span>Contacto</span></a></li>
-								<li><a href="#" ><span>Iniciar Sesion</span></a></li>
+								<li>
+									<a href="" style="background-color: transparent"class="dropdown-toggle" data-toggle="dropdown">Inciar Sesion <span class=""></span></a>
+                        <ul style= "background: none;" class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                            <div class="col-lg-12">
+																<form autocomplete="off" method="POST">
+													    	{% csrf_token %}
+													    	  <div class="form-group float-label-control">
+													    	    <label style="color: white" for="UserName: ">Nombre Usuario:</label>
+													    	    <input style= "background: none ; color: white" type="text" class="form-control" id="username" name="username" placeholder="Usuario">
+													    	  </div>
+													    	  <div class="form-group float-label-control">
+													    	    <label style="color: white" for="Password">Password: </label>
+													    	    <input style= "background: none; color: white" type="password" class="form-control" id="password" name="password" placeholder="Password">
+													    	  </div>
+													    	  <button type="submit" class="btn btn-default btn-xs btn-block">Login</button>
+													    	  <button type="reset" class="btn btn-default btn-xs btn-block">Cancel</button>
+                            </div>
+                        </ul>
+								</li>
 								{% endif %}
 		          </ul>
 		        </div>

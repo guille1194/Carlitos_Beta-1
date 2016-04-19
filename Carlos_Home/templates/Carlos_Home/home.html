@@ -91,36 +91,7 @@
         <p><a href="{% url 'about_view' %}" class="btn btn-primary">Conoce mas! </a></p>
       </div>
     </div>
-<!--login-->
-    	{% if user.is_authenticated %}
-    	<div class="page-header">
-    		<center>
-    			<h2><span class="label label-primary">Bienvenido: {{ user.username|capfirst }} </span></h2>
-    			<img src="{{ get_image_profile }}" width="50px">
-    			{{valor}}
-    		</center>
-    	</div>
-
-    	{% else %}
-
-    	<form method="POST">
-    	{% csrf_token %}
-    	  <div class="form-group">
-    	    <label for="UserName: ">Nombre Usuario:</label>
-    	    <input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
-    	  </div>
-    	  <div class="form-group">
-    	    <label for="Password">Password: </label>
-    	    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-    	  </div>
-
-    	  <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-    	  <button type="reset" class="btn btn-warning btn-lg btn-block">Cancel</button>
-
-    	</form>
-
-    	 {% endif %}
-<!--login-->
+    
 <div id="fh5co-press" data-section="press">
   <div class="container">
     <div class="row">

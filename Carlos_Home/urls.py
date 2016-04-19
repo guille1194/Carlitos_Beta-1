@@ -3,6 +3,7 @@ from .views import home, about, ContactView, Registros, Reportes, CursoView, Pro
 
 urlpatterns = [
 	url(r'^$', 'django.contrib.auth.views.login', {'template_name': 'Carlos_Home/home.html'}, name='login'),
+	url(r'^cerrar/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     url(r'^$', home, name= "home"),
     url(r'^about/$',about, name = "about_view"),
     url(r'^contacto$', ContactView.as_view(), name = "contacto"),

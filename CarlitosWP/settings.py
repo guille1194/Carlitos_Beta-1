@@ -125,7 +125,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+from django.core.urlresolvers import reverse_lazy
 
+LOGIN_URL = reverse_lazy('home')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_URL = reverse_lazy('home')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 

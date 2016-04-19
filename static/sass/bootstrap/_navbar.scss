@@ -462,7 +462,7 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-default-link-active-bg;
+        background-color: tranparent;
         color: $navbar-default-link-active-color;
       }
     }
