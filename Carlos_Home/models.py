@@ -11,14 +11,14 @@ class Cursos(models.Model):
     numero_curso = models.IntegerField(unique=True)
     curso = models.CharField(max_length=50)
 
-    def __unicode__(self):
-        return 'Curso %d: %s'%(self.numero_curso,self.curso)
+    def __str__(self):
+        return self.curso
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
     orden = models.IntegerField(default=0)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 class Post(models.Model):
