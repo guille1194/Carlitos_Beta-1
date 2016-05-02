@@ -11,7 +11,21 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
     queryset_list = Post.objects.all().order_by('-creado')
-    return render(request, 'Carlos_Home/home.html')
+    paginator = Paginator(queryset_list, 3) # Show 3 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		queryset = paginator.page(1)
+    except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+        queryset = paginator.page(paginator.num_pages)
+	context = {
+		"object_list": queryset
+	       }
+    return render(request, 'Carlos_Home/home.html', context)
 
 def about(request):
     return render(request, 'Carlos_Home/about.html')
@@ -185,3 +199,6 @@ class Crear_Post(FormView):
 
 def Cursos(request):
     return render(request, "Carlos_Home/cursos.html")
+
+def test(request):
+    return render (request, "Carlos_Home/test.html")

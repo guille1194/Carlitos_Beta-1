@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% block title %} Test {% endblock %}
+{% block inicio %}<li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
+{% block content %}
+<aside class="callout" style="background: url(../static/images/admin.jpg) no-repeat center center scroll;">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Test</h1>
+  </div>
+</aside>
+<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script>
+<div class="pb_feed" data-embed-by="1a8041fb-ba89-44e5-8303-937e2ece832e" data-game="/carlosr15/a-quizz-orientado-a-la-asociacion-carlitos-quintero" data-recommend="false" data-game-info="false" data-comments="false" data-shares="false" ></div>
+{% endblock %}
