@@ -59,7 +59,7 @@ class User_form(UserCreationForm):
 
 class PostForm(forms.Form):
     titulo = forms.CharField()
-    contenido = forms.CharField()
+    contenido = forms.CharField(widget=forms.Textarea)
     slug = forms.SlugField()
     categorias = forms.ModelChoiceField(Categoria.objects.values_list('nombre'),  empty_label= "Selecciona Curso")
     post_imagen = forms.ImageField()
