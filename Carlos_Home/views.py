@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def home(request):
-    queryset_list = Post.objects.all().order_by('-creado')
+    queryset_list = Post.objects.all().order_by('creado')
     paginator = Paginator(queryset_list, 3) # Show 3 contacts per page
 
     page = request.GET.get('page')

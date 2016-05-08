@@ -71,6 +71,8 @@
         <p><a href="{% url 'about_view' %}" class="btn btn-primary">Conoce mas! </a></p>
       </div>
     </div>
+  </div>
+</div>
 
 <div id="fh5co-press" data-section="press">
   <div class="container">
@@ -81,24 +83,23 @@
           <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
             <h3>Una lista de articulos que pueden interesarte creado por el equipo de Carlitos Quintero</h3>
           </div>
+          <div class="row">
+            <div class="col-md-6">
+              {% for post in object_list %}
+              <!-- Press Item -->
+              <div class="fh5co-press-item">
+                <div class="fh5co-press-img" style="background-image:{{post.post_imagen.url}}"></div>
+                <div class="fh5co-press-text">
+                  <h3 class="h2 fh5co-press-title">{{ post.titulo}} <span class="fh5co-border"></span></h3>
+                  <p>{{post.categorias}}</p>
+                  <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-        {% for post in object_list %}
-      <div class="col-md-6">
-        <!-- Press Item -->
-        <div class="fh5co-press-item">
-          <div class="fh5co-press-img" style="background-image:{{post.post_imagen.url}}">
-          </div>
-          <div class="fh5co-press-text">
-            <h3 class="h2 fh5co-press-title">{{ post.titulo}} <span class="fh5co-border"></span></h3>
-            <p>{{post.categorias}}</p>
-            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
     </div>
   </div>
 </div>
