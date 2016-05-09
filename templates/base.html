@@ -57,6 +57,7 @@
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
 	<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/video.css' %}">
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
@@ -131,11 +132,17 @@
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
 								<li><a href="{% url 'logout' %}" ><span> {{ user.username | capfirst }} / Salir</span></a></li>
 								{% else %}
+<<<<<<< HEAD
 								<li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
 								<li><a href="{% url 'cursos_view' %}" ><span>Cursos</span></a></li>
 								<li><a href="{% url 'contacto' %}"><span>Contacto</span></a></li>
+=======
+								<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
+								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
+								<li><a href="#" data-nav-section="contacto" ><span>Cursos</span></a></li>
+								<li><a href="{% url 'contacto' %}" data-nav-section="contacto" ><span>Contacto</span></a></li>
+>>>>>>> 84192898aeeae4070860c4b3267538eeacc739fc
 								<li><a href="{% url 'test_view' %}"><span>Test</span></a></li>
-								<li>
 									<a href="" style="background-color: transparent"class="dropdown-toggle" data-toggle="dropdown">Inciar Sesion <span class=""></span></a>
                         <ul style= "background: none;" class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
                             <div class="col-lg-12">
@@ -151,9 +158,6 @@
 													    	  </div>
 													    	  <button type="submit" class="btn btn-default btn-xs btn-block">Login</button>
 													    	  <button type="reset" class="btn btn-default btn-xs btn-block">Cancel</button>
-																	<p class="text-center" style="color: white">
-																		No tienes cuenta? <a href="{% url 'registro_view' %}">Registrate</a>
-																	</p>
                             </div>
                         </ul>
 								</li>
@@ -184,13 +188,13 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<ul class="social social-circle">
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
-						<li><a href="#"><i class="icon-facebook"></i></a></li>
+						<li><a href="https://www.facebook.com/tdahCarlitosQuinteroAc/"><i class="icon-facebook"></i></a></li>
+					<!--	<li><a href="#"><i class="icon-twitter"></i></a></li>
 						<li><a href="#"><i class="icon-youtube"></i></a></li>
 						<li><a href="#"><i class="icon-pinterest"></i></a></li>
 						<li><a href="#"><i class="icon-linkedin"></i></a></li>
 						<li><a href="#"><i class="icon-instagram"></i></a></li>
-						<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						<li><a href="#"><i class="icon-dribbble"></i></a></li> -->
 					</ul>
 				</div>
 			</div>

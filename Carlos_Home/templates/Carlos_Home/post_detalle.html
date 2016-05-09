@@ -2,26 +2,25 @@
 {% block title %}{{ post.titulo | title }} Detalle{% endblock %}
 {% block inicio %}<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
 {% block content %}
-<aside class="callout" style="background: url({{post.post_imagen.url}}) no-repeat center center scroll; background-size: cover">
+<aside class="callout">
   <div class="text-vertical-center">
+      <h1 style="color: #fff">{{ post.titulo | title }}</h1>
   </div>
 </aside>
 <div class="row" >
   <div class="col-xs-12">
     <div class="thumbnail col-xs-12">
+      <div class="video-container">
+      <center><img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900"></center>
+    </div>
       <h2 style="text-align: center">{{ post.titulo | title }}</h2>
       <h3 style="text-align: center">{{ post.categorias | title }}</h3>
-      <div class="container">
-        <div class="row">
-          <p style="text-align: center">{{ post.contenido | capfirst }}</p>
-        </div>
-      </div>
-      <div class="text-center">
+      <p style="text-align: center">{{ post.contenido | capfirst }}</p>
+      <div class="video-container">
         {% if post.post_video %}<iframe id="player" type="text/html" width="640" height="390" src="{{ post.post_video }}" frameborder="0"></iframe>{% endif %}
       </div>
       <div class="caption" ></div>
       <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}</p>
-      <p><div class="fb-like" data-href="https://localhost:8000/post_detail/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></p>
     </div>
   </div>
 </div>
