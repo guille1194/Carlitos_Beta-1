@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import home, about, ContactView, Registros, Reportes, CursoView, ProfesionitaView, admin, PacienteView, ReporteProfesionista, ReportePaciente, ReporteCurso, Crear_Post, post_detalle, post_lista, Crear_Categoria, BlogAdmin, Registro, Cursos, test
+from .views import home, about, ContactView, Registros, Reportes, CursoView, ProfesionitaView, admin, PacienteView, ReporteProfesionista, ReportePaciente, ReporteCurso, Crear_Post, post_detalle, post_lista, Crear_Categoria, BlogAdmin, Registro, Cursos, test, Blog
 
 urlpatterns = [
 	url(r'^$', 'django.contrib.auth.views.login', {'template_name': 'Carlos_Home/home.html'}, name='login'),
@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^registro/$', Registro.as_view(), name='registro_view'),
 	url(r'^cursos/$', Cursos, name = "cursos_view"),
 	url(r'^test/$', test, name = "test_view"),
+	url(r'^blog/$', Blog.as_view(), name = 'blog' )
 ]

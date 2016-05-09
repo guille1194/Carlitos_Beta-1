@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Blog {% endblock %}
+{% block inicio %}
+<li class="active"><a href="" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
+{% block content %}
+<aside class="callout" style="background: url(../static/images/admin.jpg) no-repeat center center scroll;">
+  <div class="text-vertical-center">
+      <h1 style="color: #fff">Articulos de Interes</h1>
+  </div>
+</aside>
+<div id="fh5co-press" data-section="press">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-heading text-center">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
+            <h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% for post in object_list %}
+      <div class="col-md-6">
+        <!-- Press Item -->
+        <div class="fh5co-press-item to-animate">
+          <div class="fh5co-press-img" style="background-image: url({{post.post_imagen.url}})">
+          </div>
+          <div class="fh5co-press-text">
+            <h3 class="h2 fh5co-press-title">{{post.titulo}} <span class="fh5co-border"></span></h3>
+            <h4>{{post.categorias}}</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+          </div>
+        </div>
+        <!-- Press Item -->
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

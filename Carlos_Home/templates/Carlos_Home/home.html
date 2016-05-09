@@ -3,13 +3,17 @@
 {% block title %} Home {% endblock %}
 {% block inicio %}
 <li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+{% if user.is_authenticated %}
+{% else %}
+<li><a href="#" data-nav-section="about"><span>Acerca</span></a></li>
+{% endif %}
 {% endblock %}
 {% block carrousel %}
 <div id="slider" data-section="home">
   <div class="owl-carousel owl-carousel-fullwidth">
     <!-- You may change the background color here. -->
-    <div class="item" style="background-image:url('{% static 'images/kids_bg.jpg' %}')">
-      <div class="overlay"></div>
+    <div class="item" style="background: #DC241C">
+      <div class=""></div>
       <div class="container" style="position: relative;">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center">
@@ -18,7 +22,7 @@
                 <h1 class="fh5co-lead to-animate">Bienvenido a Carlitos Quintero A.C</h1>
               <h3 class="fh5co-sub-lead to-animate">Organizacion no lucrativa ubicada en Tijuana</h3>
               <h3 class="fh5co-sub-lead to-animate">Necesitas Apoyo?</h3>
-              <p class="to-animate-2"><a href="{%url 'contacto' %}" target="_blank" class="btn btn-primary btn-lg">Contactanos!</a></p>
+              <p class="to-animate-2"><a href="{%url 'contacto' %}" target="_blank" style="background-color: #ff0000" class="btn btn-primary btn-lg">Contactanos!</a></p>
             </div>
           </div>
           </div>
@@ -26,7 +30,7 @@
       </div>
     </div>
 
-    <div class="item" style="background: #bd2222;">
+    <div class="item" style="background: #00923F;">
       <div class="container" style="position: relative;">
         <div class="row">
           <div class="col-md-7 col-sm-7">
@@ -34,22 +38,21 @@
               <div class="fh5co-owl-text">
                 <h1 class="fh5co-lead to-animate">Test de diagnostico</h1>
               <h2 class="fh5co-sub-lead to-animate">Prueba para determinar si su hijo necesita ayuda</h3>
-              <p class="to-animate-2"><a href="#" class="btn btn-primary btn-lg">Hacer Test</a></p>
+              <p class="to-animate-2"><a href="#" style="background-color: #008000"class="btn btn-primary btn-lg">Hacer Test</a></p>
               </div>
             </div>
           </div>
           <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
-            <div class="iphone to-animate-2"><img src="{% static 'images/iphone-2.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
+            <div class="iphone to-animate-2"><img src="{% static 'images/pencil.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 {% endblock %}
 {% block content %}
-<div id="fh5co-about-us" data-section="about">
+<div id="fh5co-about-us" data-section="about" style="background-color: #0093DE">
   <div class="container">
     <div class="row row-bottom-padded-lg" id="about-us">
       <div class="col-md-12 section-heading text-center">
@@ -69,36 +72,6 @@
           Compartir la esperanza de un mundo con justicia y equidad para las personas con necesidades diferentes y orientar a Padres de niños con TDAH y a la Sociedad en general sobre las necesidades y los derechos de los niños que presentan el trastorno, para que estos sean aceptados y respetados en el ámbito familiar, social y escolar. </p>
 
         <p><a href="{% url 'about_view' %}" class="btn btn-primary">Conoce mas! </a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="fh5co-press" data-section="press">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 section-heading text-center">
-        <h2 class="single-animate animate-press-1">Articulos de Interes</h2>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
-            <h3>Una lista de articulos que pueden interesarte creado por el equipo de Carlitos Quintero</h3>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              {% for post in object_list %}
-              <!-- Press Item -->
-              <div class="fh5co-press-item">
-                <div class="fh5co-press-img" style="background-image:{{post.post_imagen.url}}"></div>
-                <div class="fh5co-press-text">
-                  <h3 class="h2 fh5co-press-title">{{ post.titulo}} <span class="fh5co-border"></span></h3>
-                  <p>{{post.categorias}}</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
-                </div>
-              {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

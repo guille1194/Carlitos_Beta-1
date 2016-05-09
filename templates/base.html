@@ -58,6 +58,10 @@
 
 	<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-image-gallery.min.css' %}">
+
 	<!--
 	Default Theme Style
 	You can change the style.css (default color purple) to one of these styles
@@ -71,7 +75,7 @@
 	7. green.css
 
 	-->
-	<link rel="stylesheet" href="{% static 'css/green.css' %}">
+	<link rel="stylesheet" href="{% static 'css/blue.css' %}">
 
 	<!-- Styleswitcher ( This style is for demo purposes only, you may delete this anytime. ) -->
 
@@ -127,8 +131,7 @@
 								<li><a href="{% url 'registros_view' %}" ><span>Registros</span></a></li>
 								<li><a href="{% url 'logout' %}" ><span> {{ user.username | capfirst }} / Salir</span></a></li>
 								{% else %}
-								<li><a href="{% url 'about_view' %}" data-nav-section="about"><span>Acerca</span></a></li>
-								<li><a href="#" data-nav-section="press"><span>Blog</span></a></li>
+								<li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
 								<li><a href="{% url 'cursos_view' %}" ><span>Cursos</span></a></li>
 								<li><a href="{% url 'contacto' %}"><span>Contacto</span></a></li>
 								<li><a href="{% url 'test_view' %}"><span>Test</span></a></li>
@@ -173,7 +176,9 @@
 		<div class="container">
 			<div class="row row-bottom-padded-sm">
 				<div class="col-md-12">
-					<p class="copyright text-center">Carlitos Quintero AC</p>
+					<p class="copyright text-center">&copy; 2016 <a href="#" data-nav-section="fh5co-header">Carlitos Quintero</a>. Todos los derechos Reservados. <br>
+						Created by <a href="https://github.com/Camarbro" target="_blank">Camargo Diaz Juan </a> | <a href="https://github.com/guille1194" target="_blank">Navarro Guillermo </a> | <a href="http://freehtml5.co/" target="_blank">Carlos Rodriguez</a>
+					</p>
 				</div>
 			</div>
 			<div class="row">
@@ -207,6 +212,9 @@
 	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 	<!-- Main JS (Do not remove) -->
 	<script src="{% static 'js/main.js' %}"></script>
+
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="{% static 'js/bootstrap-image-gallery.min.js' %}"></script>
 
 	</body>
 </html>

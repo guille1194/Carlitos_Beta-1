@@ -1,22 +1,198 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}Acerca{% endblock %}
-{% block inicio %}{% endblock %}
-{% block content %}
-<aside class="callout" style="background: url(../static/images/admin.jpg) no-repeat center center scroll;">
-  <div class="text-vertical-center">
-      <h1 style="color: #fff">Acerca de nosotros</h1>
-  </div>
-</aside>
-<div id="fh5co-contact" data-section="contacto">
-  <h1 class="text-center">Ubicacion</h1>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="text-center">
-        <div class="google-maps">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1682.445442371419!2d-116.9865693810516!3d32.50234542049274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1459306630229" width="1140" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+{% block inicio %}
+<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+{% endblock %}
+{% block carrousel %}
+<div id="slider" data-section="home">
+  <div class="owl-carousel owl-carousel-fullwidth">
+    <!-- You may change the background color here. -->
+    <div class="item" style="background: #005ce6">
+      <div class=""></div>
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Conoce un poco de nuestra historia</h1>
+              <h3 class="fh5co-sub-lead to-animate">Como es que llegamos a aqui</h3>
+              <p class="to-animate-2"><a href="#" data-nav-section="historia" target="_blank" class="btn btn-primary btn-lg">Conoce!</a></p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" style="background: #ff6600;">
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-7 col-sm-7">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Ubicacion</h1>
+              <h2 class="fh5co-sub-lead to-animate">Descubre donde estamos ubicados</h3>
+              <p class="to-animate-2"><a style="background-color: #e68a00" data-nav-section="ubicacion" href="#" class="btn btn-primary btn-lg">Revisar</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
+            <div class="iphone to-animate-2"><img src="{% static 'images/iphone-2.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" style="background: #39e600;">
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-7 col-sm-7">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Galeria</h1>
+              <h2 class="fh5co-sub-lead to-animate">Mira nuestra galeria de fotos y aprende como es el dia a dia aqui, en Carlitos Quintero</h3>
+              <p class="to-animate-2"><a style= "background-color: #2db300" data-nav-section="galeria" href="#" class="btn btn-primary btn-lg">Revisar</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
+            <div class="iphone to-animate-2"><img src="{% static 'images/camera.png' %}" alt="Free HTML5 Template by FREEHTML5.co"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+{% endblock %}
+{% block content %}
+<div id="fh5co-about-us" data-section="historia" style="background-color: #DC241C">
+  <div class="container">
+    <div class="row row-bottom-padded-lg" id="about-us">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="to-animate">Acerca de Nosotros</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 to-animate">
+            <h3>Asociación civil en Tijuana, dedicada a atender el Trastorno por déficit de atención con hiperactividad.</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 to-animate">
+        <img src="{% static 'images/kids.jpg' %}" class="img-responsive img-rounded" alt="Free HTML5 Template">
+      </div>
+      <div class="col-md-4 to-animate">
+        <h2>Un poco sobre quienes somos</h2>
+        <p>
+          Compartir la esperanza de un mundo con justicia y equidad para las personas con necesidades diferentes y orientar a Padres de niños con TDAH y a la Sociedad en general sobre las necesidades y los derechos de los niños que presentan el trastorno, para que estos sean aceptados y respetados en el ámbito familiar, social y escolar. </p>
+
+        <p><a href="{% url 'about_view' %}" class="btn btn-primary">Conoce mas! </a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="fh5co-about-us" data-section="ubicacion" style="background-color: #0093DE">
+  <div class="container">
+    <div class="row row-bottom-padded-lg" id="about-us">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="to-animate">Ubicacion</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 to-animate">
+            <h3><span class="	glyphicon glyphicon-map-marker"></span>Avenida las Palmas 5049, Las Palmas, 22106 Tijuana, B.C. <br> <span class="glyphicon glyphicon-earphone"></span>+1 664 608 4521</h3>
+          </div>
+        </div>
+        <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d722.8725355127592!2d-116.9862976!3d32.5007412!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d937ff772ec7ab%3A0xdece2ea7946bf43!2sTDAH+Carlitos+Quintero+AC!5e1!3m2!1sen!2smx!4v1462792655680" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="fh5co-about-us" data-section="galeria" style="background-color: #39e600">
+  <div class="container">
+    <div class="row row-bottom-padded-lg" id="about-us">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="to-animate">Galeria de imagenes</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 to-animate">
+            <h3>Unas cuantas imagenes de nuestro trabajo</h3>
+          </div>
+          <div class='col-md-8 col-md-offset-2 to-animate'>
+               <div class="carousel slide media-carousel" id="media">
+                 <div class="carousel-inner" id = "links">
+
+                   <div class="item active">
+                     <div class="row-">
+                       <a href="{% static 'images/img_1.jpg' %}" title="Imagen 1" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_1.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_7.jpg' %}" title="Imagen 2" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_7.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_8.jpg' %}" title="Imagen 3" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_8.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_9.jpg' %}" title="Imagen 4" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_9.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_10.jpg' %}" title="Imagen 5" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_10.jpg' %}" alt="Banana"></a>
+                     </div>
+                     <div class="row-">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                     </div>
+                   </div>
+                   <div class="item">
+                     <div class="row-">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                     </div>
+                     <div class="row-">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                         <img alt="" class="img-responsive" src="http://placehold.it/250x250">
+                     </div>
+                   </div>
+                 </div>
+                 <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                 <a data-slide="next" href="#media" class="right carousel-control">›</a>
+               </div>
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

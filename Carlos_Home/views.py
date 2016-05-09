@@ -202,3 +202,8 @@ def Cursos(request):
 
 def test(request):
     return render (request, "Carlos_Home/test.html")
+
+class Blog(ListView):
+    template_name = 'Carlos_Home/blog.html'
+    model = Post
+    fields = '__all__'
