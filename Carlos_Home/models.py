@@ -4,7 +4,6 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.db import models
 from django.template.defaultfilters import slugify
-from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 class Cursos(models.Model):
@@ -69,7 +68,3 @@ class Paciente(models.Model):
 
     def __str__(self):
         return 'nombre: %s - numero expediente: %d - edad ingreso: %d' %(self.nombre_paciente, num_expediente, edad_ingreso)
-
-class Perfil(models.Model):
-	perfil_usuario = models.OneToOneField(User)
-	email = models.EmailField()
