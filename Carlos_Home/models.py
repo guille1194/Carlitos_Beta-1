@@ -10,8 +10,13 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Cursos(models.Model):
     ID_Curso = models.AutoField(primary_key=True)
-    #numero_curso = models.IntegerField(unique=True)
     curso = models.CharField(max_length=50)
+    desc = models.CharField(max_length = 500)
+    costo = models.CharField(max_length = 100)
+    horario_inicio= models.TimeField()
+    horario_final = models.TimeField()
+    fecha = models.DateField()
+    imgen = models.ImageField(upload_to = "curso_imagen/")
 
     def __str__(self):
         return self.curso
@@ -27,7 +32,7 @@ class Categoria(models.Model):
 class Post(models.Model):
     ID_Post = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length = 200)
-    desc = models.CharField(max_length = 250)
+    desc = models.CharField(max_length = 25)
     contenido = models.TextField()
     #slug = models.SlugField(unique=True)
     categorias = models.ForeignKey(Categoria)
@@ -83,7 +88,7 @@ class Paciente(models.Model):
     diagnostico = models.CharField(max_length = 45)
     fecha_nacimiento = models.DateField(default=timezone.now)
     edad_ingreso = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(130)])
-    phone = RegexValidator(regex=r'^\+?1?\d{9,15}$')
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$')
     telefono = models.CharField(validators=[phone_regex], blank=True, max_length=15)
     email = models.EmailField()
     GENERO = (

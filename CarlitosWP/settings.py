@@ -81,12 +81,14 @@ WSGI_APPLICATION = 'CarlitosWP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'carlitosac',
-        'USER': 'carlitos',
-        'PASSWORD': 'carlos123',
-        'HOST': 'localhost',
-        'PORT': '',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'NAME': 'carlitosquintero',
+        #'USER': 'carlos',
+        #'PASSWORD': 'quinterocarlos2016',
+        #'HOST': 'localhost',
+        #'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -141,7 +143,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 EMAIL_HOST = "smtp.gmail.com"
 
-EMAIL_HOST_USER = "juan.mc.diaz@gmail.com"
-EMAIL_HOST_PASSWORD = "wsgzflpdvnwldash"
+EMAIL_HOST_USER = "tdahcarlitosquinteroac@gmail.com"
+EMAIL_HOST_PASSWORD = "quinterocarlos2016"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

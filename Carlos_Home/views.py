@@ -62,8 +62,13 @@ class CursoView(FormView):
 
     def form_valid(self, form):
         p = Cursos()
-        p.numero_curso = form.cleaned_data['numero_curso']
         p.curso = form.cleaned_data['curso']
+        p.desc = form.cleaned_data['desc']
+        p.costo = form.cleaned_data['costo']
+        p.horario_inicio = form.cleaned_data['horario_inicio']
+        p.horario_final = form.cleaned_data['horario_final']
+        p.fecha = form.cleaned_data['fecha']
+        p.imgen = form.cleaned_data['imgen']
         p.save()
         return super(CursoView,self).form_valid(form)
 
@@ -95,11 +100,9 @@ class PacienteView(FormView):
     success_url = reverse_lazy('registros_view')
 
     def form_valid(self,form):
-        user = form.save()
         p = Paciente()
-        p.perfil_usuario = user
-        p.nombre_paciente = user.first_name
-        p.apellido_paciente = user.last_name
+        p.nombre_paciente = form.cleaned_data['nombre_paciente']
+        p.apellido_paciente = form.cleaned_data['apellido_paciente']
         p.num_expediente = form.cleaned_data['num_expediente']
         p.area = form.cleaned_data['area']
         p.fecha_ingreso = form.cleaned_data['fecha_ingreso']
@@ -197,8 +200,10 @@ class Crear_Post(FormView):
         p.save()
         return super(Crear_Post, self).form_valid(form)
 
-def Cursos(request):
-    return render(request, "Carlos_Home/cursos.html")
+class Cursos(ListView):
+    template_name = "Carlos_Home/cursos.html"
+    model = Cursos
+    fields = "__all__"
 
 def test(request):
     return render (request, "Carlos_Home/test.html")

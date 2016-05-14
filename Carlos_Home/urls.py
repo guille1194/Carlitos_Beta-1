@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^Crear_Categoria/$', Crear_Categoria.as_view(), name='crear_categoria_view'),
     url(r'^blogadmin/$', BlogAdmin, name= "blog_admin"),
     url(r'^registro/$', Registro.as_view(), name='registro_view'),
-	url(r'^cursos/$', Cursos, name = "cursos_view"),
+	url(r'^cursos/$', Cursos.as_view(), name = "cursos_view"),
 	url(r'^test/$', test, name = "test_view"),
 	url(r'^blog/$', Blog.as_view(), name = 'blog' )
 ]

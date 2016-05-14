@@ -13,8 +13,13 @@ class ContactForm(forms.Form):
         pass
 
 class RegistroCursoForm(forms.Form):
-    numero_curso = forms.IntegerField()
-    curso = forms.CharField(max_length=50)
+    curso = forms.CharField(max_length = 30)
+    desc = forms.CharField(max_length = 200)
+    costo = forms.CharField(max_length = 50)
+    horario_inicio = forms.TimeField()
+    horario_final = forms.TimeField()
+    fecha = forms.DateField()
+    imgen = forms.ImageField()
 
 class ProfesionistaForm(UserCreationForm):
     reportes = forms.CharField()
@@ -32,13 +37,19 @@ class ProfesionistaForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name')
 
 
-class PacienteForm(UserCreationForm):
+class PacienteForm(forms.Form):
+    nombre_paciente = forms.CharField(max_length = 30)
+    apellido_paciente = forms.CharField(max_length = 30)
     num_expediente = forms.IntegerField()
     area = forms.CharField()
     fecha_ingreso = forms.DateField(input_formats = ['%m/%d/%y'])
     fecha_conclusion = forms.DateField(input_formats = ['%m/%d/%y'])
-    evaluacion_completa = forms.CharField()
-    reportes = forms.CharField()
+    Opciones = (
+        ('SI', 'Si'),
+        ('NO', 'No'),
+    )
+    evaluacion_completa = forms.ChoiceField(choices=Opciones)
+    reportes = forms.ChoiceField(choices=Opciones)
     diagnostico = forms.CharField()
     fecha_nacimiento = forms.DateField(input_formats = ['%m/%d/%y'])
     edad_ingreso = forms.IntegerField()
@@ -50,9 +61,6 @@ class PacienteForm(UserCreationForm):
                     )
     genero = forms.ChoiceField(choices=ELECCION_GENERO)
 
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name')
 
 class User_form(UserCreationForm):
 	email = forms.CharField(max_length=99)
