@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Cursos, Categoria
+from .models import Curso, Categoria
 
 class ContactForm(forms.Form):
     name = forms.CharField()
@@ -22,14 +22,15 @@ class RegistroCursoForm(forms.Form):
     imgen = forms.ImageField()
 
 class ProfesionistaForm(UserCreationForm):
-    reportes = forms.CharField()
-    HORARIO = (
-                    ('M', 'Matutino'),
-                    ('V', 'Vespertino'),
-                )
-    horario = forms.ChoiceField(choices = HORARIO)
+    REPORTES = (
+    ('SI', 'Si'),
+    ('NO', 'No'),
+    )
+    reportes = forms.ChoiceField(choices = REPORTES)
+    horario_inicio = forms.TimeField()
+    horario_final = forms.TimeField()
     telefono = forms.IntegerField()
-    curso = forms.ModelChoiceField(Cursos.objects.values_list('curso'), empty_label= "Selecciona Curso")
+    curso = forms.ModelChoiceField(Curso.objects, empty_label= "Selecciona Curso")
     email = forms.EmailField()
 
     class Meta:
@@ -41,9 +42,14 @@ class PacienteForm(forms.Form):
     nombre_paciente = forms.CharField(max_length = 30)
     apellido_paciente = forms.CharField(max_length = 30)
     num_expediente = forms.IntegerField()
-    area = forms.CharField()
-    fecha_ingreso = forms.DateField(input_formats = ['%m/%d/%y'])
-    fecha_conclusion = forms.DateField(input_formats = ['%m/%d/%y'])
+    AREAS = (
+        ('lenguaje', 'Lenguaje'),
+        ('aprendizaje', 'Aprendisaje'),
+        ('psicologia', 'Psicologia'),
+    )
+    area = forms.ChoiceField(choices = AREAS)
+    fecha_ingreso = forms.DateField()
+    fecha_conclusion = forms.DateField()
     Opciones = (
         ('SI', 'Si'),
         ('NO', 'No'),
@@ -51,7 +57,7 @@ class PacienteForm(forms.Form):
     evaluacion_completa = forms.ChoiceField(choices=Opciones)
     reportes = forms.ChoiceField(choices=Opciones)
     diagnostico = forms.CharField()
-    fecha_nacimiento = forms.DateField(input_formats = ['%m/%d/%y'])
+    fecha_nacimiento = forms.DateField()
     edad_ingreso = forms.IntegerField()
     telefono = forms.IntegerField()
     email = forms.EmailField()
@@ -63,7 +69,16 @@ class PacienteForm(forms.Form):
 
 
 class User_form(UserCreationForm):
-	email = forms.CharField(max_length=99)
+    email = forms.EmailField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Email'}))
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Last Name'}))
+    username = forms.CharField(widget=forms.widgets.TextInput(attrs={'placeholder': 'Username'}))
+    password1 = forms.CharField(widget=forms.widgets.PasswordInput(attrs={'placeholder': 'Password'}))
+    password2 = forms.CharField(widget=forms.widgets.PasswordInput(attrs={'placeholder': 'Password Confirmation'}))
+
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'first_name', 'last_name', 'password1','password2']
 
 class PostForm(forms.Form):
     titulo = forms.CharField()

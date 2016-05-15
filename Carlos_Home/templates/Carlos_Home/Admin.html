@@ -15,6 +15,7 @@
                 <h2>Opciones</h2>
                 <hr class="small">
                 <div  class="row">
+                  {% if user.is_superuser %}
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item">
                             <span style = "color: #0000ff" class="fa-stack fa-4x">
@@ -68,6 +69,25 @@
                         </div>
                     </div>
                 <!-- /.row (nested) -->
+                {% else %}
+                  {% if perms.Carlos_Home.es_profesionista %}
+                  <div class="col-md-3 col-sm-6">
+                      <div class="service-item">
+                          <span style = "color: #ff0000" class="fa-stack fa-4x">
+                          <i  class="fa fa-circle fa-stack-2x"></i>
+                          <i style = "color: #fff" class="fa fa-file-text fa-stack-1x text-primary"></i>
+                      </span>
+                          <h4>
+                              <strong>Opciones Profesionista</strong>
+                          </h4>
+                          <p>Report Seccction for the Bauss</p>
+                          <a href="#"  class="btn btn-primary btn-lg">Click Here!</a>
+                      </div>
+                  </div>
+                  {% else %}
+                  <h1>No tienes permiso de estar aqui, bitch </h1>
+                  {% endif %}
+                {% endif %}
             </div>
             <!-- /.col-lg-10 -->
         </div>

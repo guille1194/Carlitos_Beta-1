@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect, render_to_resp
 from django.views.generic import TemplateView, FormView, CreateView, ListView, UpdateView, DetailView
 from .forms import  ContactForm, RegistroCursoForm, ProfesionistaForm, PacienteForm, User_form, PostForm
 from django.core.urlresolvers import reverse_lazy
-from .models import Cursos, Profesionista, Paciente, Post, Categoria
+from .models import Curso, Profesionista, Paciente, Post, Categoria
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.models import User, Permission
 
 # Create your views here.
 
@@ -61,7 +62,7 @@ class CursoView(FormView):
     success_url = reverse_lazy('registros_view')
 
     def form_valid(self, form):
-        p = Cursos()
+        p = Curso()
         p.curso = form.cleaned_data['curso']
         p.desc = form.cleaned_data['desc']
         p.costo = form.cleaned_data['costo']
@@ -84,12 +85,21 @@ class ProfesionitaView(FormView):
         p.nombre_profesionista = user.first_name
         p.apellido_profesionista = user.last_name
         p.reportes = form.cleaned_data['reportes']
-        p.horario = form.cleaned_data['horario']
+        p.horario_inicio = form.cleaned_data['horario_inicio']
+        p.horario_final = form.cleaned_data['horario_final']
         p.telefono = form.cleaned_data['telefono']
         p.curso = form.cleaned_data['curso']
         p.email = form.cleaned_data['email']
+        permiso = Permission.objects.get(codename='es_profesionista')
+        p.perfil_usuario.user_permissions.add(permiso)
         p.save()
         return super(ProfesionitaView,self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(ProfesionitaView, self).get_context_data(**kwargs)
+        ctx['Curso'] = Curso.objects.all()
+        return ctx
+
 
 def admin(request):
     return render(request, 'Carlos_Home/Admin.html')
@@ -130,7 +140,7 @@ class ReporteProfesionista(ListView):
 
 class ReporteCurso(ListView):
 	template_name = 'Carlos_Home/reporte_cursos.html'
-	model = Cursos
+	model = Curso
 	fields = '__all__'
 
 class Crear_Categoria(CreateView):
@@ -172,16 +182,12 @@ class Registro(FormView):
 	template_name = 'Carlos_Home/registro.html'
 	form_class = User_form
 	#fields = ['user_perfil', 'mail', 'phone']
-	success_url = reverse_lazy('signup_view')
+	success_url = reverse_lazy('registros_view')
 
 
 	def form_valid(self, form):
 		user = form.save()
-		p = Perfil()
-		p.perfil_usuario = user
-		p.mail = form.cleaned_data['email']
-		p.save()
-		return super(Signup, self).form_valid(form)
+		return super(Registro, self).form_valid(form)
 
 class Crear_Post(FormView):
     template_name = 'Carlos_Home/CrearPost.html'
@@ -202,7 +208,7 @@ class Crear_Post(FormView):
 
 class Cursos(ListView):
     template_name = "Carlos_Home/cursos.html"
-    model = Cursos
+    model = Curso
     fields = "__all__"
 
 def test(request):

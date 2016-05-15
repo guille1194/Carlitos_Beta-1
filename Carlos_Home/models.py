@@ -7,8 +7,14 @@ from django.template.defaultfilters import slugify
 from django.core.validators import RegexValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
+class QuerySet(models.QuerySet):
+
+    def get_curso(self):
+        return self.promotor_nombre
+
 # Create your models here.
-class Cursos(models.Model):
+class Curso(models.Model):
     ID_Curso = models.AutoField(primary_key=True)
     curso = models.CharField(max_length=50)
     desc = models.CharField(max_length = 500)
@@ -16,6 +22,7 @@ class Cursos(models.Model):
     horario_inicio= models.TimeField()
     horario_final = models.TimeField()
     fecha = models.DateField()
+    objects = QuerySet.as_manager()
     imgen = models.ImageField(upload_to = "curso_imagen/")
 
     def __str__(self):
@@ -58,11 +65,14 @@ class Profesionista(models.Model):
     horario_final = models.TimeField()
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$')
     telefono = models.CharField(validators=[phone_regex], blank=True, max_length=15)
-    curso = models.ForeignKey(Cursos)
+    curso = models.ForeignKey(Curso)
     email = models.EmailField()
 
+    class Meta:
+        permissions = (('es_profesionista','Profesionista'),)
+
     def __unicode__(self):
-        return(self.curso)
+        return(self.nombre_profesionista)
 
     def __str__(self):
         return 'nombre: %s - curso: %s' %(self.nombre_profesionista, self.curso)
@@ -72,7 +82,12 @@ class Paciente(models.Model):
     nombre_paciente = models.CharField(max_length = 99)
     apellido_paciente = models.CharField(max_length = 99)
     num_expediente = models.IntegerField() #ocupo saber como manejan el numero de expediente
-    area = models.CharField(max_length = 30) # esto no viene siendo lo mismo que los cursos?
+    AREAS = (
+        ('lenguaje', 'Lenguaje'),
+        ('aprendizaje', 'Aprendisaje'),
+        ('psicologia', 'Psicologia'),
+    )
+    area = models.CharField(max_length = 15, choices = AREAS) # esto no viene siendo lo mismo que los cursos?
     fecha_ingreso = models.DateField(default=timezone.now)
     fecha_conclusion = models.DateField(default=timezone.now)
     EVALUACION = (
@@ -99,4 +114,4 @@ class Paciente(models.Model):
 
 
     def __str__(self):
-        return 'nombre: %s - numero expediente: %d - edad ingreso: %d' %(self.nombre_paciente, num_expediente, edad_ingreso)
+        return 'nombre: %s - numero expediente: %d - edad ingreso: %d' %(self.nombre_paciente, self.num_expediente, self.edad_ingreso)
