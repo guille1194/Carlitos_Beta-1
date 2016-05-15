@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Curso, Categoria
+from .models import Curso, Categoria, Profesionista
 
 class ContactForm(forms.Form):
     name = forms.CharField()
@@ -18,6 +18,7 @@ class RegistroCursoForm(forms.Form):
     costo = forms.CharField(max_length = 50)
     horario_inicio = forms.TimeField()
     horario_final = forms.TimeField()
+    imparte = forms.ModelChoiceField(Profesionista.objects, empty_label = "Selecciona Profesionista")
     fecha = forms.DateField()
     imgen = forms.ImageField()
 
@@ -30,7 +31,6 @@ class ProfesionistaForm(UserCreationForm):
     horario_inicio = forms.TimeField()
     horario_final = forms.TimeField()
     telefono = forms.IntegerField()
-    curso = forms.ModelChoiceField(Curso.objects, empty_label= "Selecciona Curso")
     email = forms.EmailField()
 
     class Meta:
@@ -75,16 +75,18 @@ class User_form(UserCreationForm):
     username = forms.CharField(widget=forms.widgets.TextInput(attrs={'placeholder': 'Username'}))
     password1 = forms.CharField(widget=forms.widgets.PasswordInput(attrs={'placeholder': 'Password'}))
     password2 = forms.CharField(widget=forms.widgets.PasswordInput(attrs={'placeholder': 'Password Confirmation'}))
+    is_superuser = forms.BooleanField(required = False, widget=forms.widgets.CheckboxInput())
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'first_name', 'last_name', 'password1','password2']
+        fields = ['email', 'username', 'first_name', 'last_name', 'password1','password2', 'is_superuser']
 
 class PostForm(forms.Form):
     titulo = forms.CharField()
-    contenido = forms.CharField(widget=forms.Textarea)
-    slug = forms.SlugField()
-    categorias = forms.ModelChoiceField(Categoria.objects.values_list('nombre'),  empty_label= "Selecciona Curso")
+    desc = forms.CharField(max_length = 150, widget = forms.Textarea())
+    contenido = forms.CharField(widget=forms.Textarea())
+    categorias = forms.ModelChoiceField(Categoria.objects ,  empty_label= "Selecciona Categoria")
     post_imagen = forms.ImageField()
-    creado = forms.DateTimeField(input_formats = ['%m/%d/%Y %H:%M:%S'])
-    post_video = forms.CharField()
+    creado = forms.DateField()
+    post_video = forms.CharField(required = False)
+    autor = forms.ModelChoiceField(Profesionista.objects, empty_label = "Selecciona autor")

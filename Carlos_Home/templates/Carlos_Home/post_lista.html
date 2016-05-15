@@ -8,41 +8,43 @@
       <h1 style="color: #fff">Listado de los Post</h1>
   </div>
 </aside>
-{% for post in object_list %}
-  <div class="container">
-    <div class="row row-bottom-padded-xs">
-      <div class="col-md-12 section-heading text-center">
-        <h2><a href="{% url 'post_detalle' id=post.id %}">{{ post.titulo | title }}</a></h2>
+
+  <div class="container" style="margin-top: 15px">
+    {% for post in object_list %}
+    <div class="row row-bottom-padded-xs thumbnail">
+      <div style = "padding-bottom: 0px; margin-bottom: 0px;" class="col-md-12 section-heading text-center">
+        <h2 style="padding-bottom: 0px; margin-bottom: 0px; margin-top: 0px; " ><a href="{% url 'post_detalle' id=post.ID_Post %}">{{ post.titulo | title }}</a></h2>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h3>Publicado en {{ post.categorias | title }} por Carlitos Quintero </h3>
+            <p>
+              {{post.desc}}
+            </p>
           </div>
         </div>
       </div>
-      <div class="col-md-8">
-        <img src="{{ post.post_imagen.url }}" class="img-responsive img-rounded" alt="Post Image">
-      </div>
-      <div class="col-md-4">
-        <h2></h2>
-        <p> {{post.contenido}} </p>
-      </div>
     </div>
     <hr>
-{% endfor %}
+    {% endfor %}
+  </div>
 
-  <div class="pagination">
-    <span class="step-links">
-        {% if object_list.has_previous %}
-            <a href="?page={{ object_list.previous_page_number }}">anterior</a>
-        {% endif %}
+  <div class="container">
+    <div class="row">
+      <div class="pagination">
+        <span class="step-links">
+            {% if object_list.has_previous %}
+                <a href="?page={{ object_list.previous_page_number }}">anterior</a>
+            {% endif %}
 
-        <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+            <span class="current">
+                Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+            </span>
+
+            {% if object_list.has_next %}
+                <a href="?page={{ object_list.next_page_number }}">siguiente</a>
+            {% endif %}
         </span>
-
-        {% if object_list.has_next %}
-            <a href="?page={{ object_list.next_page_number }}">siguiente</a>
-        {% endif %}
-    </span>
+      </div>
+    </div>
   </div>
 {% endblock %}

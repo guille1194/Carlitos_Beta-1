@@ -13,43 +13,11 @@ class QuerySet(models.QuerySet):
     def get_curso(self):
         return self.promotor_nombre
 
-# Create your models here.
-class Curso(models.Model):
-    ID_Curso = models.AutoField(primary_key=True)
-    curso = models.CharField(max_length=50)
-    desc = models.CharField(max_length = 500)
-    costo = models.CharField(max_length = 100)
-    horario_inicio= models.TimeField()
-    horario_final = models.TimeField()
-    fecha = models.DateField()
-    objects = QuerySet.as_manager()
-    imgen = models.ImageField(upload_to = "curso_imagen/")
-
-    def __str__(self):
-        return self.curso
-
-class Categoria(models.Model):
-    ID_Categoria = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
-    #orden = models.IntegerField(default=0)
-
-    def __str__(self):
+    def get_categoria(self):
         return self.nombre
 
-class Post(models.Model):
-    ID_Post = models.AutoField(primary_key=True)
-    titulo = models.CharField(max_length = 200)
-    desc = models.CharField(max_length = 25)
-    contenido = models.TextField()
-    #slug = models.SlugField(unique=True)
-    categorias = models.ForeignKey(Categoria)
-    post_imagen = models.ImageField(upload_to='post_imagen/')
-    creado = models.DateTimeField(default=timezone.now)
-    actualizado = models.DateTimeField(default=timezone.now)
-    post_video = models.CharField(max_length = 300, null = True)
-
-    def __str__(self):
-        return self.titulo
+    def get_profesionista(self):
+        return self.nombre_profesionista
 
 class Profesionista(models.Model):
     ID_Profesionista = models.AutoField(primary_key=True)
@@ -65,8 +33,8 @@ class Profesionista(models.Model):
     horario_final = models.TimeField()
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$')
     telefono = models.CharField(validators=[phone_regex], blank=True, max_length=15)
-    curso = models.ForeignKey(Curso)
     email = models.EmailField()
+    objects = QuerySet.as_manager()
 
     class Meta:
         permissions = (('es_profesionista','Profesionista'),)
@@ -76,6 +44,46 @@ class Profesionista(models.Model):
 
     def __str__(self):
         return 'nombre: %s - curso: %s' %(self.nombre_profesionista, self.curso)
+
+# Create your models here.
+class Curso(models.Model):
+    ID_Curso = models.AutoField(primary_key=True)
+    curso = models.CharField(max_length=50)
+    desc = models.CharField(max_length = 500)
+    costo = models.CharField(max_length = 100)
+    horario_inicio= models.TimeField()
+    horario_final = models.TimeField()
+    imparte = models.ForeignKey(Profesionista)
+    fecha = models.DateField()
+    objects = QuerySet.as_manager()
+    imgen = models.ImageField(upload_to = "curso_imagen/")
+
+    def __str__(self):
+        return self.curso
+
+class Categoria(models.Model):
+    ID_Categoria = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+    objects = QuerySet.as_manager()
+
+    def __str__(self):
+        return self.nombre
+
+
+
+class Post(models.Model):
+    ID_Post = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length = 200)
+    desc = models.CharField(max_length = 150)
+    contenido = models.TextField()
+    categorias = models.ForeignKey(Categoria)
+    post_imagen = models.ImageField(upload_to='post_imagen/')
+    creado = models.DateField(default=timezone.now)
+    post_video = models.CharField(max_length = 300, null = True)
+    autor = models.ForeignKey(Profesionista)
+
+    def __str__(self):
+        return self.titulo
 
 class Paciente(models.Model):
     ID_Paciente = models.AutoField(primary_key=True)

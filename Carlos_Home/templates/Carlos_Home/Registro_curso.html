@@ -50,6 +50,17 @@
           </div>
         </div>
         <div class="form-group">
+          <div class="input-group">
+            <select class="form-control" id="id_imparte" name="imparte" placeholder="Imparte" required>
+              <option value="" selected="selected">Selecciona Profesionista</option>
+              {% for p in Profesionista %}
+              <option value="{{p.ID_Profesionista}}">{{p.nombre_profesionista}}</option>
+              {% endfor %}
+            </select>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>
+        <div class="form-group">
           <div class="input-group" data-validate="date">
             <input type="text" class="form-control" name="fecha" id="id_fecha" placeholder="Fecha" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>

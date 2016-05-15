@@ -68,10 +68,16 @@ class CursoView(FormView):
         p.costo = form.cleaned_data['costo']
         p.horario_inicio = form.cleaned_data['horario_inicio']
         p.horario_final = form.cleaned_data['horario_final']
+        p.imparte = form.cleaned_data['imparte']
         p.fecha = form.cleaned_data['fecha']
         p.imgen = form.cleaned_data['imgen']
         p.save()
         return super(CursoView,self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(CursoView, self).get_context_data(**kwargs)
+        ctx['Profesionista'] = Profesionista.objects.all()
+        return ctx
 
 class ProfesionitaView(FormView):
     template_name = 'Carlos_Home/Registro_prof.html'
@@ -88,17 +94,11 @@ class ProfesionitaView(FormView):
         p.horario_inicio = form.cleaned_data['horario_inicio']
         p.horario_final = form.cleaned_data['horario_final']
         p.telefono = form.cleaned_data['telefono']
-        p.curso = form.cleaned_data['curso']
         p.email = form.cleaned_data['email']
         permiso = Permission.objects.get(codename='es_profesionista')
         p.perfil_usuario.user_permissions.add(permiso)
         p.save()
         return super(ProfesionitaView,self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        ctx = super(ProfesionitaView, self).get_context_data(**kwargs)
-        ctx['Curso'] = Curso.objects.all()
-        return ctx
 
 
 def admin(request):
@@ -150,7 +150,7 @@ class Crear_Categoria(CreateView):
     success_url=reverse_lazy('index_view')
 
 def post_detalle(request, id=None):
-	post = get_object_or_404(Post, id=id)
+	post = get_object_or_404(Post, ID_Post=id)
 	context = {
 		"object_list": "eee",
 		"post": post,
@@ -192,17 +192,18 @@ class Registro(FormView):
 class Crear_Post(FormView):
     template_name = 'Carlos_Home/CrearPost.html'
     form_class = PostForm
-    success_url=reverse_lazy('index_view')
+    success_url=reverse_lazy('post_lista')
 
     def form_valid(self,form):
         p = Post()
         p.titulo = form.cleaned_data['titulo']
+        p.desc = form.cleaned_data['desc']
         p.contenido = form.cleaned_data['contenido']
-        p.slug = form.cleaned_data['slug']
         p.categorias = form.cleaned_data['categorias']
         p.post_imagen = form.cleaned_data['post_imagen']
         p.creado = form.cleaned_data['creado']
         p.post_video = form.cleaned_data['post_video']
+        p.autor = form.cleaned_data['autor']
         p.save()
         return super(Crear_Post, self).form_valid(form)
 

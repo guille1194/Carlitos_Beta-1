@@ -20,58 +20,69 @@
       <h2>Completa el formulario</h2>
       <hr style="padding-bottom: 15px;" class="small">
     <div class="col-sm-8 col-sm-offset-2">
-      <div class="form-group float-label-control">
-          <label for="id_username">Username:</label>
-          <input id="id_username" maxlength="30" name="username" type="text" />
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" maxlength="30" class="form-control" name="username" id="id_username" placeholder="Nombre de Usuario" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_first_name">First name:</label>
-        <input id="id_first_name" maxlength="30" name="first_name" type="text" />
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" id="id_first_name" maxlength="30" name="first_name" type="text" placeholder="Nombre" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_last_name">Last name:</label>
-        <input id="id_last_name" maxlength="30" name="last_name" type="text" />
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" id="id_last_name" maxlength="30" name="last_name" type="text" placeholder="Apellido" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_password1">Password:</label>
-        <input id="id_password1" name="password1" type="password" />
+      <div class="form-group">
+        <div class="input-group" data-validate = "password">
+          <input type="password" class="form-control" name="password1" id="id_password1" placeholder="Contraseña" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_password2">Password confirmation:</label>
-        <input id="id_password2" name="password2" type="password" />
+      <div class="form-group">
+        <div class="input-group" data-validate = "passwordv">
+          <input type="password" class="form-control" name="password2" id="id_password2" placeholder="Confirmar Contraseña" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_reportes">Reportes:</label>
-        <select id="id_reportes" name="reportes">
-          <option value="">Reportes </option>
-          <option value="SI">Si</option>
-          <option value="NO">No</option>
-        </select></p>
+      <div class="form-group">
+        <div class="input-group">
+          <select class="form-control" id="id_reportes" name="reportes" placeholder="Reportes" required>
+            <option value="">Reportes</option>
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+          </select>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_horario_inicio">Horario inicio:</label>
-        <input id="id_horario_inicio" name="horario_inicio" type="text" />
+      <div class="form-group">
+        <div class="input-group" data-validate="time">
+          <input type="text" class="form-control" id="id_horario_inicio" name="horario_inicio" placeholder="Hora de inicio" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_horario_final">Horario final:</label>
-        <input id="id_horario_final" name="horario_final" type="text" />
+      <div class="form-group">
+        <div class="input-group" data-validate="time">
+          <input type="text" class="form-control" name="horario_final" id="id_horario_final" placeholder="Hora termino" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_telefono">Telefono:</label>
-        <input id="id_telefono" name="telefono" type="number" />
+      <div class="form-group">
+        <div class="input-group" data-validate="number">
+          <input type="text" class="form-control" name="telefono" id="id_telefono" placeholder="Telefono" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
-      <div class="form-group float-label-control">
-        <label for="id_curso">Curso:</label>
-        <select id="id_curso" name="curso">
-          <option value="" selected="selected">Selecciona Curso</option>
-          {% for p in Curso %}
-          <option value="{{p.ID_Curso}}">{{p.curso}}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <div class="form-group float-label-control">
-        <label for="id_email">Email:</label>
-        <input id="id_email" name="email" type="email" />
+      <div class="form-group">
+        <div class="input-group" data-validate="email">
+          <input type="text" class="form-control" name="email" id="id_email" placeholder="Email" required>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+        </div>
       </div>
       <div class="btn-group  col-xs-8 col-xs-push-2" role="group" aria-label="..." style="padding-left: 0px;padding-right: 0px;">
         <button type="submit" class="btn btn-default btnDef1 col-xs-6">Register</button>

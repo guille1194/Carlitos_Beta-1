@@ -1,24 +1,26 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}{{ post.titulo | title }} Detalle{% endblock %}
 {% block inicio %}<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>{% endblock %}
 {% block content %}
-<aside class="callout">
+<aside class="callout" style="background: url({% static 'images/bg.png' %}) no-repeat center center scroll;">
   <div class="text-vertical-center">
       <h1 style="color: #fff">{{ post.titulo | title }}</h1>
   </div>
 </aside>
-<div class="row" >
-  <div class="col-xs-12">
-    <div class="thumbnail col-xs-12">
-      <div class="video-container">
-      <center><img src="{{ post.post_imagen.url }}" alt="" class="img-responsive" width="900"></center>
-    </div>
-      <h2 style="text-align: center">{{ post.titulo | title }}</h2>
-      <h3 style="text-align: center">{{ post.categorias | title }}</h3>
-      <p style="text-align: center">{{ post.contenido | capfirst }}</p>
-      <div class="video-container">
-        {% if post.post_video %}<iframe id="player" type="text/html" width="640" height="390" src="{{ post.post_video }}" frameborder="0"></iframe>{% endif %}
+<div class="container">
+  <div class="row" >
+    <div class="col-xs-12">
+      <h3 style="text-align: center">Publicado en {{post.categorias}} por {{post.autor}}</h3>
+      <div class="text-center">
+        <img style="height: 350px" class="  img-rounded" src="{{post.post_imagen.url}}" alt="" />
       </div>
+      <p style="text-align: center">{{ post.contenido | capfirst }}</p>
+      {% if post.post_video %}
+      <div class="video-container">
+        <iframe width="560" height="315" src="{{ post.post_video }}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      {% endif %}
       <div class="caption" ></div>
       <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}</p>
     </div>
@@ -30,13 +32,4 @@
     <button type="button" class="btn btn-default btnDef2 col-xs-2"><i class="icon-remove"></i></button>
   {% endif%}
 </div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=564744000354862";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 {% endblock %}
