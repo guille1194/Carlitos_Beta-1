@@ -7,6 +7,18 @@ from django.template.defaultfilters import slugify
 from django.core.validators import RegexValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+class RegistroPaciente(models.Model):
+    Id = models.CharField(max_length=3, null=True)
+    NombrePaciente = models.CharField(max_length=100, null=True)
+    Expediente = models.CharField(max_length=20, null=True)
+    Area = models.CharField(max_length=99, null=True)
+    Profesionista = models.CharField(max_length=100, null=True)
+    Fecha_inicio = models.CharField(max_length=18, null=True)
+    Fecha_conclusion = models.CharField(max_length=18, null=True)
+    Evaluacion_completa = models.CharField(max_length=99, null=True)
+    Reportes = models.CharField(max_length=99, null=True)
+    Diagnostico = models.CharField(max_length=99, null=True)
+    Edad = models.CharField(max_length=50, null=True)
 
 class QuerySet(models.QuerySet):
 
