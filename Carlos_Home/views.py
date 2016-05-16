@@ -147,7 +147,7 @@ class Crear_Categoria(CreateView):
     template_name='Carlos_Home/CrearCategoria.html'
     model = Categoria
     fields= '__all__'
-    success_url=reverse_lazy('index_view')
+    success_url=reverse_lazy('admin_panel')
 
 def post_detalle(request, id=None):
 	post = get_object_or_404(Post, ID_Post=id)
