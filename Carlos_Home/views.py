@@ -207,6 +207,12 @@ class Crear_Post(FormView):
         p.save()
         return super(Crear_Post, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        ctx = super(Crear_Post, self).get_context_data(**kwargs)
+        ctx['Categoria'] = Categoria.objects.all()
+        ctx['Profesionista'] = Profesionista.objects.all()
+        return ctx
+
 class Cursos(ListView):
     template_name = "Carlos_Home/cursos.html"
     model = Curso

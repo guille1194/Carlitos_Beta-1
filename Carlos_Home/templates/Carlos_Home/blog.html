@@ -63,7 +63,11 @@
       <div class="col-md-6">
         <!-- Press Item -->
         <div class="fh5co-press-item to-animate">
+          {% if post.post_imagen %}
           <div class="fh5co-press-img" style="background-image: url({{post.post_imagen.url}})">
+          {% else %}
+          <div class="fh5co-press-img" style="background-image: url({% static 'images/kids.jpg'%})">
+          {% endif %}
           </div>
           <div class="fh5co-press-text">
             <h3 class="h2 fh5co-press-title">{{post.titulo}} <span class="fh5co-border"></span></h3>

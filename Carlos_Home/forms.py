@@ -86,7 +86,7 @@ class PostForm(forms.Form):
     desc = forms.CharField(max_length = 150, widget = forms.Textarea())
     contenido = forms.CharField(widget=forms.Textarea())
     categorias = forms.ModelChoiceField(Categoria.objects ,  empty_label= "Selecciona Categoria")
-    post_imagen = forms.ImageField()
+    post_imagen = forms.ImageField(required = False)
     creado = forms.DateField()
     post_video = forms.CharField(required = False)
     autor = forms.ModelChoiceField(Profesionista.objects, empty_label = "Selecciona autor")
