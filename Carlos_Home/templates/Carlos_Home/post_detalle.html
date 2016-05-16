@@ -23,15 +23,19 @@
         <iframe width="560" height="315" src="{{ post.post_video }}" frameborder="0" allowfullscreen></iframe>
       </div>
       {% endif %}
-      <div class="caption" ></div>
       <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ post.creado }}</p>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://carlosbeta.herokuapp.com/">Siguenos en Facebook
-        <i class="fa fa-facebook-square fa-4x" style="color:#3b5998"></i>
-      </a>
+      <div class="col-xs-6 col-xs-offset-6">
+        <ul class="share-links">
+          <li class="facebook"><a style = "text-decoration: none; font-size: 26px;" href="https://www.facebook.com/sharer/sharer.php?u=https://carlosbeta.herokuapp.com/post_detalle/{{post.ID_Post}}"><span class="fa fa-facebook"></span></a></li>
+          <li class="twitter"><a style = "text-decoration: none; font-size: 26px;" href="https://twitter.com/intent/tweet?url=https://carlosbeta.herokuapp.com/post_detalle/{{post.ID_Post}}"><span class="fa fa-twitter"></span></a></li>
+          <li class="googleplus"><a style = "text-decoration: none; font-size: 26px;" href="https://plus.google.com/share?url={https://carlosbeta.herokuapp.com/post_detalle/{{post.ID_Post}}}" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span class="fa fa-google-plus"></span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-<div class="container">
+<div  style="margin-top: 100px;"class="container">
   {% if user.is_authenticated %}
     <button type="button" class="btn btn-default btnDef1 col-xs-2 col-xs-offset-4"><i class="icon-pencil"></i></button>
     <button type="button" class="btn btn-default btnDef2 col-xs-2"><i class="icon-remove"></i></button>
