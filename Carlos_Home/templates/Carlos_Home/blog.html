@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block title %} Blog {% endblock %}
 {% block inicio %}
-<li class="active"><a href="" data-nav-section="home"><span>Inicio</span></a></li>
+<li class="active"><a href="{% url 'home' %}"><span>Inicio</span></a></li>
+<li ><a href="{% url 'about_view' %}"><span>Acerca</span></a></li>
 {% endblock %}
 {% block carrousel %}
 <div id="slider" data-section="home">

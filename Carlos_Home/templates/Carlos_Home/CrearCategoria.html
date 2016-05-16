@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %} Registros {% endblock %}
 {% block inicio %}
 <li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
 {% endblock %}
 {% block content %}
-<aside class="callout" style="background: url(static/images/admin.jpg) no-repeat center center scroll;">
+<aside class="callout" style="background: url({% static 'images/admin.jpg'%}) no-repeat center center scroll;">
   <div class="text-vertical-center">
       <h1 style="color: #fff">Registro Curso</h1>
   </div>

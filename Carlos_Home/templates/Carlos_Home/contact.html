@@ -1,10 +1,18 @@
 {% extends 'base.html'%}
 {% block title %} Contact {% endblock %}
-{% block carrousel %}{% endblock %}
+{% block inicio %}
+<li><a href="{% url 'home' %}"><span>Inicio</span></a></li>
+{% if user.is_authenticated %}
+{% else %}
+<li ><a href="{% url 'about_view' %}"><span>Acerca</span></a></li>
+{% endif %}
+{% endblock %}
 {% block content %}
 <aside class="callout" style="background: url(static/images/contacto.jpg) no-repeat center center scroll;">
   <div class="text-vertical-center">
-      <h1 style="color: #fff"> Contactanos</h1>
+      <h1 style="color: #fff; margin-top: 30px"> Contactanos</h1>
+      <h2 style="color: #fff"><span class="glyphicon glyphicon-earphone"></span> 608 4521 <span class="glyphicon glyphicon-phone"></span>  (664) 166 5449  <span class="glyphicon glyphicon-phone"></span> (664) 166 4742 </h2>
+      <h2 style="color: #fff"><span class="	glyphicon glyphicon-map-marker"></span>Avenida las Palmas 5049, Las Palmas, 22106 Tijuana, B.C.</h2>
   </div>
 </aside>
 

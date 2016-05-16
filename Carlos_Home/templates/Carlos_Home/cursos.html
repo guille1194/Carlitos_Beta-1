@@ -1,15 +1,55 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block tite %} Cursos {% endblock %}
-{% block inicio %}{% endblock %}
-{% block content %}
-<aside class="callout" style="background: url(../static/images/admin.jpg) no-repeat center center scroll;">
-  <div class="text-vertical-center">
-      <h1 style="color: #fff">Cursos</h1>
+{% block title %} Cursos {% endblock %}
+{% block inicio %}
+<li><a href="{% url 'home' %}"><span>Inicio</span></a></li>
+<li ><a href="{% url 'about_view' %}"><span>Acerca</span></a></li>
+{% endblock %}
+{% block carrousel %}
+<div id="slider" data-section="home">
+  <div class="owl-carousel owl-carousel-fullwidth">
+    <!-- You may change the background color here. -->
+    <div class="item" style="background: #33ccff">
+      <div class=""></div>
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">Cursos y Clases</h1>
+              <h3 class="fh5co-sub-lead to-animate">Aqui encontraras todo acerca de las clases y cursos que impartimos</h3>
+              <p class="to-animate-2"><a href="#" data-nav-section="cursos" target="_blank" style="background-color: #00ace6" class="btn btn-primary btn-lg">Enterate!</a></p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" style="background: #7a7a7a;">
+      <div class="container" style="position: relative;">
+        <div class="row">
+          <div class="col-md-7 col-sm-7">
+            <div class="fh5co-owl-text-wrap">
+              <div class="fh5co-owl-text">
+                <h1 class="fh5co-lead to-animate">¿Dudas o Preguntas? </h1>
+              <h2 class="fh5co-sub-lead to-animate">Contactate con nosotros por telefono o envianos un correo</h3>
+              <p class="to-animate-2"><a href="{% url 'contacto'%}" style="background-color: #595959" class="btn btn-primary btn-lg">Contactanos!</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
+            <div class="iphone to-animate-2"><img src="{% static 'images/contact.png' %}" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</aside>
+</div>
+{% endblock %}
+{% block content %}
 <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <section id="portfolio" class="bg-light-gray" data-section= "cursos">
         <div class="container">
             <div class="row" style="margin-top: 35px">
               {% for item in object_list %}

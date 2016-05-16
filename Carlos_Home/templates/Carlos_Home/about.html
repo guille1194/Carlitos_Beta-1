@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %}Acerca{% endblock %}
 {% block inicio %}
-<li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
+<li class="active"><a href="{% url 'home' %}"><span>Inicio</span></a></li>
 {% endblock %}
 {% block carrousel %}
 <div id="slider" data-section="home">
@@ -122,11 +122,11 @@
 
                    <div class="item active">
                      <div class="row-">
-                       <a href="{% static 'images/img_1.jpg' %}" title="Imagen 1" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_1.jpg' %}" alt="Banana"></a>
-                       <a href="{% static 'images/img_7.jpg' %}" title="Imagen 2" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_7.jpg' %}" alt="Banana"></a>
-                       <a href="{% static 'images/img_8.jpg' %}" title="Imagen 3" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_8.jpg' %}" alt="Banana"></a>
-                       <a href="{% static 'images/img_9.jpg' %}" title="Imagen 4" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_9.jpg' %}" alt="Banana"></a>
-                       <a href="{% static 'images/img_10.jpg' %}" title="Imagen 5" data-gallery><img style="width: 150px; height: 150px" src="{% static 'images/img_10.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_1.jpg' %}" title="Imagen 1" data-gallery><img  style="width: 150px; height: 150px" src="{% static 'images/img_1.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_7.jpg' %}" title="Imagen 2" data-gallery><img  style="width: 150px; height: 150px" src="{% static 'images/img_7.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_8.jpg' %}" title="Imagen 3" data-gallery><img  style="width: 150px; height: 150px" src="{% static 'images/img_8.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_9.jpg' %}" title="Imagen 4" data-gallery><img  style="width: 150px; height: 150px" src="{% static 'images/img_9.jpg' %}" alt="Banana"></a>
+                       <a href="{% static 'images/img_10.jpg' %}" title="Imagen 5" data-gallery><img  style="width: 150px; height: 150px" src="{% static 'images/img_10.jpg' %}" alt="Banana"></a>
                      </div>
                      <div class="row-">
                          <img alt="" class="img-responsive" src="http://placehold.it/250x250">
