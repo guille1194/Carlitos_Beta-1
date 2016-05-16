@@ -211,6 +211,7 @@ class Crear_Post(FormView):
         ctx = super(Crear_Post, self).get_context_data(**kwargs)
         ctx['Categoria'] = Categoria.objects.all()
         ctx['Profesionista'] = Profesionista.objects.all()
+        ctx['User'] = User.objects.all()
         return ctx
 
 class Cursos(ListView):

@@ -80,7 +80,7 @@ class Post(models.Model):
     post_imagen = models.ImageField(upload_to='post_imagen/')
     creado = models.DateField(default=timezone.now)
     post_video = models.CharField(max_length = 300, null = True)
-    autor = models.ForeignKey(Profesionista)
+    autor = models.ForeignKey(User)
 
     def __str__(self):
         return self.titulo

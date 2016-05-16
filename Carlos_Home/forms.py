@@ -89,4 +89,4 @@ class PostForm(forms.Form):
     post_imagen = forms.ImageField(required = False)
     creado = forms.DateField()
     post_video = forms.CharField(required = False)
-    autor = forms.ModelChoiceField(Profesionista.objects, empty_label = "Selecciona autor")
+    autor = forms.ModelChoiceField(User.objects.all(), empty_label = "Selecciona autor")

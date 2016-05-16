@@ -25,8 +25,8 @@
           <div class="input-group">
             <select class="form-control" name="autor" id="id_autor" placeholder="Autor" required>
               <option value="">Autor</option>
-              {% for p in Profesionista %}
-              <option value="{{p.ID_Profesionista}}">{{p.nombre_profesionista}}</option>
+              {% for p in User %}
+              <option value="{{p.id}}">{{p.username}}</option>
               {% endfor %}
             </select>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
