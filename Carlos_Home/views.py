@@ -226,3 +226,12 @@ class Blog(ListView):
     template_name = 'Carlos_Home/blog.html'
     model = Post
     fields = '__all__'
+
+def buscar2(request):
+	if request.POST:
+		data = request.POST['campo']
+		p = Paciente.objects.filter(edad_ingreso=data)
+		ctx = {'objects': p}
+	else:
+		ctx = {'mensaje':'no hay datos..'}
+	return render(request, 'Carlos_Home/buscar2.html', ctx)
