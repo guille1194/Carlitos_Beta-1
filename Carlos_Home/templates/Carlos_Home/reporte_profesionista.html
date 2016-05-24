@@ -4,37 +4,35 @@
 <li class="active"><a href="{% url 'home' %}" data-nav-section="home"><span>Inicio</span></a></li>
 {% endblock %}
 {% block content %}
-<aside class="callout" style="background: url(static/images/admin.jpg) no-repeat center center scroll;">
+<aside class="callout" style="background:  url(../static/images/admin.jpg) no-repeat center center scroll;">
   <div class="text-vertical-center">
       <h1 style="color: #fff">Reporte Profesionista</h1>
   </div>
 </aside>
 
-<!--{% if user.is_authenticated %}
 {% if user.is_superuser %}
-Binevenido {{ user.username }}<br> -->
 		<table class="table table-stripped">
+    <th>ID_Profesionista</th>
 		<th>Perfil Usuario</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Reportes</th>
-		<th>Horario</th>
+		<th>Horario inicio</th>
+    <th>Horario final</th>
 		<th>Telefono</th>
-		<th>Curso</th>
 		<th>Correo electronico</th>
 	{% for item in object_list %}
 	<tr>
+  <td>{{item.ID_Profesionista}}</td>
 	<td>{{item.perfil_usuario}}</td>
 	<td>{{item.nombre_profesionista}}</td>
 	<td>{{item.apellido_profesionista}}</td>
 	<td>{{item.reportes}}</td>
 	<td>{{item.horario}}</td>
 	<td>{{item.telefono}}</td>
-	<td>{{item.curso}}</td>
 	<td>{{item.email}}</td>
 	</tr>
 		{% endfor %}
+    	{% endif %}
 		</table>
-	{% endif %}
-	{% endif %}
 {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Buscar{% endblock %}
+{% block content %}
+
+		<form action="" method="POST">
+			{% csrf_token %}
+			<input type="text" name="campo">
+			<input type="submit" name="find" id="find" value="Find">
+			<input type="reset" value="Cancel">
+		</form>
+
+
+
+<div class="table-responsive">
+	  <table class="table">
+	    <tr>
+					<th>Edad Paciente</th>
+					<th>ID Paciente</th>
+					<th>Nombre Paciente</th>
+					<th>Apellido Paciente</th>
+					<th>Expediente</th>
+					<th>Area</th>
+					<th>Fecha Ingreso</th>
+					<th>Fecha Conclusion</th>
+					<th>Evaluacion</th>
+					<th>Reportes</th>
+					<th>Diagnostico</th>
+					<th>Fecha Nacimiento</th>
+					<th>Telefono</th>
+					<th>Email</th>
+					<th>Genero</th>
+
+
+				</tr>
+			{% for item in objects %}
+				<tr>
+					<td>{{item.edad_ingreso}}</td>
+					<td>{{item.ID_Paciente}}</td>
+					<td>{{item.nombre_paciente}}</td>
+					<td>{{item.apellido_paciente}}</td>
+					<td>{{item.num_expediente}}</td>
+					<td>{{item.area}}</td>
+					<td>{{item.fecha_ingreso}}</td>
+					<td>{{item.fecha_conclusion}}</td>
+					<td>{{item.evaluacion_completa}}</td>
+					<td>{{item.reportes}}</td>
+					<td>{{item.diagnostico}}</td>
+					<td>{{item.fecha_nacimiento}}</td>
+					<td>{{item.telefono}}</td>
+					<td>{{item.email}}</td>
+					<td>{{item.genero}}</td>
+				</tr>
+			{% endfor %}
+
+	  </table>
+	</div>
+
+		<h3>{{ mensaje }}</h3>
+
+
+{% endblock %}
