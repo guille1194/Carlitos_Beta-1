@@ -1,9 +1,10 @@
 from django.conf.urls import url
 from .views import home, about, ContactView, Registros, Reportes, CursoView, ProfesionitaView, admin, PacienteView, ReporteProfesionista, ReportePaciente, ReporteCurso, Crear_Post, post_detalle, post_lista, Crear_Categoria, BlogAdmin, Registro, Cursos, test, Blog
+from django.contrib.auth.views import login, logout_then_login
 
 urlpatterns = [
-	url(r'^$', 'django.contrib.auth.views.login', {'template_name': 'Carlos_Home/home.html'}, name='login'),
-	url(r'^cerrar/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+	url(r'^$', login, {'template_name': 'Carlos_Home/home.html'}, name='login'),
+	url(r'^cerrar/$', logout_then_login, name='logout'),
     url(r'^$', home, name= "home"),
     url(r'^about/$',about, name = "about_view"),
     url(r'^contacto$', ContactView.as_view(), name = "contacto"),

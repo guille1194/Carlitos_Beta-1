@@ -53,9 +53,6 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'CarlitosWP.urls'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-)
 
 TEMPLATES = [
     {
