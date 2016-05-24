@@ -108,6 +108,7 @@ class PacienteView(FormView):
     template_name = 'Carlos_Home/Registro_paciente.html'
     form_class = PacienteForm
     success_url = reverse_lazy('registros_view')
+    paginate_by = 20
 
     def form_valid(self,form):
         p = Paciente()
