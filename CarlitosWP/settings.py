@@ -147,7 +147,3 @@ EMAIL_HOST_USER = "tdahcarlitosquinteroac@gmail.com"
 EMAIL_HOST_PASSWORD = "quinterocarlos2016"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-from django.contrib.auth.models import User
-
-User.Meta.ordering = ['username']
